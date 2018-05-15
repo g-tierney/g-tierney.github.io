@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Classification on Graham Tierneyxyz</title>
+    <link>/tags/classification/</link>
+    <description>Recent content in Classification on Graham Tierneyxyz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 10 May 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/classification/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Magic Genetics</title>
+      <link>/post/write_up/</link>
+      <pubDate>Thu, 10 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/write_up/</guid>
+      <description>IntroductionLast spring, I took a class on Bayesian statistics at the University of Chicago that had several exercises focused on building a model to classify species based on their genome. The basic setup was that you were given a data set of salmon, their genome sequencing data, and which sub-population they belonged to. From this data, we needed to build a model to classify new salmon into the sub-populations. The strategy was to use the fact that alleles appeared with different frequencies in the different sub-populations, so the fact that a new fish did have certain alleles and did not have others was informative about which sub-population it came from.</description>
+    </item>
+    
+  </channel>
+</rss>

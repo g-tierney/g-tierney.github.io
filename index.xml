@@ -20,7 +20,7 @@
 &lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Last spring, I took a class on Bayesian statistics at the University of Chicago that had several exercises focused on building a model to classify species based on their genome. The basic setup was that you were given a data set of salmon, their genome sequencing data, and which sub-population they belonged to. From this data, we needed to build a model to classify new salmon into the sub-populations. The strategy was to use the fact that alleles appeared with different frequencies in the different sub-populations, so the fact that a new fish did have certain alleles and did not have others was informative about which sub-population it came from.&lt;/p&gt;
 &lt;p&gt;This problem and solution struck me as being very similar to an issue near and dear to my heart: classifying decks into archetypes in collectible card games (CCGs). Specifically, Magic the Gathering. One could think of alleles as analogues for cards and the sub-populations as analogues for deck archetypes (UW Control, Jund, Merfolk, etc.). In this post, I will describe how to apply a Bayesian classification algorithm to this scenario and discuss some of its advantages. I assume the reader has familiarity with basic mathematical probability and statistics. I also will not show proofs for the mathematical claims that I make, but I will try to explain the intuition behind the concepts. Knowing the application area, collectible card games and Magic, will be necessary to understand the examples.&lt;/p&gt;
-&lt;p&gt;Ultimately, with very minimal data cleaning, I am able to accurately classify 86% of decks played in a testing sample. Frequently played archetypes and archetypes that share few cards with others are more accurately classified. The code and data are available on &lt;a href=&#34;https://github.com/g-tierney/magic_deck_classification_multi_dir&#34;&gt;Github&lt;/a&gt;. I also describe some simple human-implementable improvements and additional features that should be included in practice.&lt;/p&gt;
+&lt;p&gt;Ultimately, with very minimal data cleaning, I am able to correctly classify 80% of decks played in a testing sample. Frequently played archetypes and archetypes that share few cards with others are more accurately classified. The code and data are available on &lt;a href=&#34;https://github.com/g-tierney/magic_deck_classification_multi_dir&#34;&gt;Github&lt;/a&gt;. I also describe some simple human-implementable improvements and additional features that should be included in practice.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-problem&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;The Problem&lt;/h2&gt;
@@ -31,7 +31,7 @@
 &lt;div id=&#34;the-data&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;The Data&lt;/h2&gt;
 &lt;p&gt;The method I will describe relies on having a lot of decks with known archetypes. I will use data from &lt;a href=&#34;https://www.mtggoldfish.com/&#34;&gt;MTG Goldfish&lt;/a&gt; on Modern decks played in Star City Games (SCG) events from 2014 to the present. Modern is a non-rotating format, which means that cards from older sets will always be legal in the format. In a rotating format like Standard, where only cards from sets released in the past two years are legal, data on older decks is not useful to classify newer decks. Additionally, the names of deck archetypes at Star City Games events are more standardized than the weekly data from Magic Online (MTGO), the digital version of the game. The algorithm could be used in these other scenarios with enough data, but deck-lists are only released for top finishers at SCG events and on MTGO.&lt;/p&gt;
-&lt;p&gt;Over the 802 tournaments, I observe 7,844 unique decks, 500 unique deck archetypes, and 1,741 unique cards. I will separate a 300 deck sample to use for testing after constructing the model.&lt;/p&gt;
+&lt;p&gt;Over the 841 tournaments, I observe 8,249 unique decks, 516 unique deck archetypes, and 1,772 unique cards. I will separate a 300 deck sample to use for testing after constructing the model.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-method&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;The Method&lt;/h2&gt;
@@ -50,7 +50,7 @@ number
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Delver of Secrets
+Experiment One
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
 4
@@ -58,42 +58,42 @@ Delver of Secrets
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Snapcaster Mage
+Goblin Guide
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2
+4
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Young Pyromancer
+Kird Ape
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2
+4
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Tasigur, the Golden Fang
+Wild Nacatl
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-2
+4
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Gurmag Angler
+Burning-Tree Emissary
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-3
+4
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Dispel
+Tarmogoyf
 &lt;/td&gt;
 &lt;td style=&#34;text-align:right;&#34;&gt;
-1
+4
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -101,8 +101,8 @@ Dispel
 &lt;p&gt;We also have a set of training decks. The same card name and card quantity variables are included, but it also includes the true archetype name. The ultimate goal is to use the information in the training decks to classify a new deck of an unknown archetype.&lt;/p&gt;
 &lt;div id=&#34;maximum-likelihood&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Maximum Likelihood&lt;/h3&gt;
-&lt;p&gt;The simplest approach to the classification problem is to use a maximum likelihood estimation. In the training set, find the frequency that each card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; appears among cards in archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; and treat this as the probability that a random card from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; will be card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;. For example, 1,555 Lightning Bolts appear among the 24,622 cards in Jund decks, so this probability would be estimated as 0.06. The likelihood that &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt; came from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; can be thought of as the probability that 60 draws with replacement from a pool of every Magic card will result in &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt; when the probability of drawing each card is given by the probabilities estimated for archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; in the training data. Formally, this is a draw of size 60 from a Multinomial distribution on the population of every Magic card and probability parameters &lt;span class=&#34;math inline&#34;&gt;\(p_i = &amp;lt;p_{i,1},...,p_{i,1741}&amp;gt;\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(p_{i,c}\)&lt;/span&gt; is the proportion of card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; among cards in archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;. This is written below (note that &lt;span class=&#34;math inline&#34;&gt;\(x_c\)&lt;/span&gt; is the number of times card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; appeared in &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt;):&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(D_{new}|\text{archetype}=i) = \frac{60!}{x_1! ... x_{1741}!} \prod_{c=i}^{1741}p_{c,i}^{x_c} \propto \prod_{c=i}^{1741}p_{c,i}^{x_c} \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The simplest approach to the classification problem is to use a maximum likelihood estimation. In the training set, find the frequency that each card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; appears among cards in archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; and treat this as the probability that a random card from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; will be card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;. For example, 1,653 Lightning Bolts appear among the 26,363 cards in Jund decks, so this probability would be estimated as 0.06. The likelihood that &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt; came from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; can be thought of as the probability that 60 draws with replacement from a pool of every Magic card will result in &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt; when the probability of drawing each card is given by the probabilities estimated for archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; in the training data. Formally, this is a draw of size 60 from a Multinomial distribution on the population of every Magic card and probability parameters &lt;span class=&#34;math inline&#34;&gt;\(p_i = &amp;lt;p_{i,1},...,p_{i,1772}&amp;gt;\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(p_{i,c}\)&lt;/span&gt; is the proportion of card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; among cards in archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;. This is written below (note that &lt;span class=&#34;math inline&#34;&gt;\(x_c\)&lt;/span&gt; is the number of times card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; appeared in &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt;):&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(D_{new}|\text{archetype}=i) = \frac{60!}{x_1! ... x_{1772}!} \prod_{c=i}^{1772}p_{c,i}^{x_c} \propto \prod_{c=i}^{1772}p_{c,i}^{x_c} \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;The most relevant part of this probability is the large product of each card frequency for each time it appears in &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt;. The factorials just count the number of ways &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt; could have been drawn. However, it can be completely ignored! We will classify &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt; as whatever archetype maximizes the likelihood. The factorials are the same for every archetype, so ignoring them will not change the result.&lt;/p&gt;
 &lt;p&gt;The biggest drawback of this method is that if a card is never observed in a given archetype in the training data, the estimated likelihood that any deck containing that card is of that archetype is zero. This can be particularly problematic. A blue-white control deck that decides to use Baneslayer Angel as a finisher might have 59 cards identical to a blue-white control deck in the training set, but it will have a likelihood of zero if no training blue-white control deck contained Baneslayer Angel.&lt;/p&gt;
 &lt;p&gt;The solution to this problem is to add pseudo counts to every deck in the training set. Suppose you round every zero frequency to some small number, say 0.01. Now if a new card appears in an archetype, the likelihood will not be zero, and if the rest of the deck matches a known archetype well, it can still be correctly classified. Picking this pseudo count number can be hard. It should maybe even be different for different decks based on how many times that archetype is observed in the training set because you are likely more confident in zero frequencies for decks that you observe many times.&lt;/p&gt;
@@ -110,10 +110,10 @@ Dispel
 &lt;div id=&#34;bayesian-modeling&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Bayesian Modeling&lt;/h3&gt;
 &lt;p&gt;The method I propose is essentially a more rigorous way of adding these pseudo counts by putting a Bayesian prior on the frequencies. A useful distribution on a set of frequencies is the Dirichlet distribution. A draw from an n-dimensional Dirichlet distribution is a set of n positive numbers that sum to one. Note that n-1 dimensions identify the sample because the last dimension must ensure the values all sum to one. It has n parameters, call each &lt;span class=&#34;math inline&#34;&gt;\(\alpha_c\)&lt;/span&gt;, and the expected value for &lt;span class=&#34;math inline&#34;&gt;\(p_c\)&lt;/span&gt;, the frequency of card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;, is &lt;span class=&#34;math inline&#34;&gt;\(\alpha_c/\sum_{j=1}^n \alpha_j\)&lt;/span&gt;. As &lt;span class=&#34;math inline&#34;&gt;\(\alpha_c\)&lt;/span&gt; increases, the variance decreases. To understand this distribution, its useful to first consider the two-dimensional case, called a &lt;a href=&#34;https://stephens999.github.io/fiveMinuteStats/beta.html&#34;&gt;Beta distribution&lt;/a&gt;. The link shows some useful visualizations of the distribution under different parameters. The Beta(1,1) distribution is uniform, Beta(5,5) has a peak at 0.5, Beta(1,4) has a peak at 0.25, Beta(0.1,0.1) has a minimum at 0.5 and has asymptotic behavior at 0 and 1.&lt;/p&gt;
-&lt;p&gt;Suppose we start with a uniform Dirichlet prior for each deck (&lt;span class=&#34;math inline&#34;&gt;\(\alpha_c = 1\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;), essentially starting from the position that all frequency combinations are equally likely. The intuition is that the model starts from the perspective that, without any data, the probability that a random draw of a single card from an archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is a specific card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; is equal to &lt;span class=&#34;math inline&#34;&gt;\(1/n\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is the number of unique cards (1,741 in my data). The probability that a random card from an Infect deck is Lightning Bolt is 1/1,741, the probability that a random card from a Tron deck is Urza’s Mine is 1/1,741, etc. The uncertainty about these probabilities is also the same for every card in every archetype. Of course these probabilities are wrong in practice, but they provide a sensible starting point and will be updated with data.&lt;/p&gt;
-&lt;p&gt;Next, we observe the training data for each archetype, &lt;span class=&#34;math inline&#34;&gt;\(D_t\)&lt;/span&gt;. Assuming that each archetype has a unique set of card frequencies, using proper Bayesian updating, the posterior distribution of frequencies (the distribution conditional on the data) for each archetype is also Dirichlet with parameters &lt;span class=&#34;math inline&#34;&gt;\(\alpha_c = 1 + n_c\)&lt;/span&gt;, the number of times card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; appeared in the archetype across all decks in &lt;span class=&#34;math inline&#34;&gt;\(D_t\)&lt;/span&gt;. That is, starting from the prior stated above and given the training data, beliefs about the true card frequencies for each archetype are described by this distribution. To understand the intuition, after observing the training data, the probability that a single random card drawn from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is equal to a specific card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; is (1 + the number of card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; that appeared in archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(n_{c,i}\)&lt;/span&gt;))/(&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; + the number of cards from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(n_i\)&lt;/span&gt;)). For example, Lightning Bolt was never observed in an Infect deck, so the posterior expected probability that a random card from an Infect deck is Lightning Bolt is &lt;span class=&#34;math inline&#34;&gt;\((1+0)/(1,741+21,607) \approx 0.00013\)&lt;/span&gt;. Four copies of Urza’s Mine were observed in every Tron deck, so the posterior expected probability that a random card from a Tron deck is Urza’s Mine is &lt;span class=&#34;math inline&#34;&gt;\((1+1,272)/(1,741+19,099) \approx 0.061\)&lt;/span&gt;, which is pretty close to &lt;span class=&#34;math inline&#34;&gt;\(4/60 = 0.0\overline{6}\)&lt;/span&gt;. Using this method, an Infect deck splashing Lightning Bolt would not be ruled impossible, just extremely unlikely, and the model has determined that nearly every Tron deck has four Urza’s Mines. The posterior also captures differing levels of confidence in these estimations. The variance in frequencies for archetypes observed many times in &lt;span class=&#34;math inline&#34;&gt;\(D_t\)&lt;/span&gt; is lower than for archetypes observed fewer times because the variance decreases as the sum of the &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; parameters increases. In other words, I am more confident in the estimation of the frequency of Urza’s Mine in Tron, a heavily played deck, than I am about the frequency of Blood Moon in Skred Red decks, a rarely played deck.&lt;/p&gt;
+&lt;p&gt;Suppose we start with a uniform Dirichlet prior for each deck (&lt;span class=&#34;math inline&#34;&gt;\(\alpha_c = 1\)&lt;/span&gt; for all &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt;), essentially starting from the position that all frequency combinations are equally likely. The intuition is that the model starts from the perspective that, without any data, the probability that a random draw of a single card from an archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is a specific card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; is equal to &lt;span class=&#34;math inline&#34;&gt;\(1/n\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; is the number of unique cards (1,772 in my data). The probability that a random card from an Infect deck is Lightning Bolt is 1/1,772, the probability that a random card from a Tron deck is Urza’s Mine is 1/1,772, etc. The uncertainty about these probabilities is also the same for every card in every archetype. Of course these probabilities are wrong in practice, but they provide a sensible starting point and will be updated with data.&lt;/p&gt;
+&lt;p&gt;Next, we observe the training data for each archetype, &lt;span class=&#34;math inline&#34;&gt;\(D_t\)&lt;/span&gt;. Assuming that each archetype has a unique set of card frequencies, using proper Bayesian updating, the posterior distribution of frequencies (the distribution conditional on the data) for each archetype is also Dirichlet with parameters &lt;span class=&#34;math inline&#34;&gt;\(\alpha_c = 1 + n_c\)&lt;/span&gt;, the number of times card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; appeared in the archetype across all decks in &lt;span class=&#34;math inline&#34;&gt;\(D_t\)&lt;/span&gt;. That is, starting from the prior stated above and given the training data, beliefs about the true card frequencies for each archetype are described by this distribution. To understand the intuition, after observing the training data, the probability that a single random card drawn from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is equal to a specific card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; is (1 + the number of card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; that appeared in archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(n_{c,i}\)&lt;/span&gt;))/(&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; + the number of cards from archetype &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(n_i\)&lt;/span&gt;)). For example, Lightning Bolt was never observed in an Infect deck, so the posterior expected probability that a random card from an Infect deck is Lightning Bolt is &lt;span class=&#34;math inline&#34;&gt;\((1+0)/(1,772+21,607) \approx 0.00013\)&lt;/span&gt;. Four copies of Urza’s Mine were observed in every Tron deck, so the posterior expected probability that a random card from a Tron deck is Urza’s Mine is &lt;span class=&#34;math inline&#34;&gt;\((1+1,272)/(1,772+19,099) \approx 0.061\)&lt;/span&gt;, which is pretty close to &lt;span class=&#34;math inline&#34;&gt;\(4/60 = 0.0\overline{6}\)&lt;/span&gt;. Using this method, an Infect deck splashing Lightning Bolt would not be ruled impossible, just extremely unlikely, and the model has determined that nearly every Tron deck has four Urza’s Mines. The posterior also captures differing levels of confidence in these estimations. The variance in frequencies for archetypes observed many times in &lt;span class=&#34;math inline&#34;&gt;\(D_t\)&lt;/span&gt; is lower than for archetypes observed fewer times because the variance decreases as the sum of the &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; parameters increases. In other words, I am more confident in the estimation of the frequency of Urza’s Mine in Tron, a heavily played deck, than I am about the frequency of Blood Moon in Skred Red decks, a rarely played deck.&lt;/p&gt;
 &lt;p&gt;Finally, when encountering a new deck, we want to compute a posterior probability that the deck came from each of the archetypes we saw in the training data. Adopting a prior that without data each archetype is equally probable implies that the likelihood alone will determine this probability. A new deck, &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt;, is a collection of 60 cards defined by a vector of &lt;span class=&#34;math inline&#34;&gt;\(x_c\)&lt;/span&gt;’s, the number of times card &lt;span class=&#34;math inline&#34;&gt;\(c\)&lt;/span&gt; appears in &lt;span class=&#34;math inline&#34;&gt;\(D_{new}\)&lt;/span&gt;. Our model interprets this deck as a draw of size 60 from a Multinomial-Dirichlet distribution on the set of all unique cards with Dirichlet parameters set by the posterior described above. This distribution is a Multinomial distribution where the frequency parameters are an unknown draw from a known Dirichlet distribution. So, for each archetype, the likelihood is computed as as:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(\text{archetype} = i | D_{new},D_t,\alpha=1) \propto P(D_{new} | \text{archetype} = i,D_t,\alpha=1) = \]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[f(D_{new};\text{size} = 60,\alpha_c = 1+n_{c,i}) = \frac{(60!) \Gamma(\sum_{c=1}^{1741} \alpha_c)}{\Gamma(60 + \sum_{c=1}^{1741} \alpha_c)} \prod_{c=1}^{1741} \frac{x_c + \alpha_c}{(x_c!) \Gamma(\alpha_c)} \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[P(\text{archetype} = i | D_{new},D_t,\alpha=1) \propto P(D_{new} | \text{archetype} = i,D_t,\alpha=1) = \]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[f(D_{new};\text{size} = 60,\alpha_c = 1+n_{c,i}) = \frac{(60!) \Gamma(\sum_{c=1}^{1772} \alpha_c)}{\Gamma(60 + \sum_{c=1}^{1772} \alpha_c)} \prod_{c=1}^{1772} \frac{x_c + \alpha_c}{(x_c!) \Gamma(\alpha_c)} \]&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Where &lt;span class=&#34;math inline&#34;&gt;\(f(x)\)&lt;/span&gt; is the pmf of the Multinomial-Dirichlet distribution and &lt;span class=&#34;math inline&#34;&gt;\(\Gamma\)&lt;/span&gt; is the gamma function, which is very similar to a factorial that can be applied non-integers. This function does look a lot more complicated than the simple likelihood before. That is because it is accounting for the uncertainty in the frequencies. You could simplify this function by using just the expectation of each frequency for each deck (&lt;span class=&#34;math inline&#34;&gt;\(\alpha_c\)&lt;/span&gt; divided by the sum of the &lt;span class=&#34;math inline&#34;&gt;\(\alpha_c\)&lt;/span&gt;’s). That likelihood would look like the simple likelihood described previously where you can ignore the factorial constant and just take the product of each expected probability exponentiated by &lt;span class=&#34;math inline&#34;&gt;\(x_c\)&lt;/span&gt;. It would solve the problem of zero frequency cards. However, you would lose information about how confident you were in each expectation. The estimated frequencies of an archetype only observed twice in &lt;span class=&#34;math inline&#34;&gt;\(D_t\)&lt;/span&gt; should be viewed with more suspicion than the frequencies for one observed 500 times. That is the reason the gamma functions outside of the product cannot be ignored in this likelihood.&lt;/p&gt;
 &lt;p&gt;After computing each of these, standardize them to sum to one and you have the probability that the new deck came from each of the observed archetypes. Classify it into whichever archetype has the highest probability and you’re done!&lt;/p&gt;
 &lt;/div&gt;
@@ -177,22 +177,22 @@ NaN
 0.01
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-236
+235
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 300
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.79
+0.78
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-228
+224
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-272
+278
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.84
+0.81
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -200,27 +200,27 @@ NaN
 1.00
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-258
+239
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 300
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.86
+0.80
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-254
+236
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-289
+292
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.88
+0.81
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;The value of &lt;span class=&#34;math inline&#34;&gt;\(\alpha=1\)&lt;/span&gt; appears to be the most accurate, getting 86% of classifications correct, but the smaller &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; is not very different. It is also worth noting that the method appears to be too confident in its classifications. One would hope the accuracy rate would be similar to the estimated probability, but it appears that the classifications made with at least 95% probability have an accuracy rate well below that number.&lt;/p&gt;
+&lt;p&gt;The value of &lt;span class=&#34;math inline&#34;&gt;\(\alpha=1\)&lt;/span&gt; appears to be the most accurate, getting 80% of classifications correct, but the smaller &lt;span class=&#34;math inline&#34;&gt;\(\alpha\)&lt;/span&gt; is not very different. It is also worth noting that the method appears to be too confident in its classifications. One would hope the accuracy rate would be similar to the estimated probability, but it appears that the classifications made with at least 95% probability have an accuracy rate well below that number.&lt;/p&gt;
 &lt;p&gt;I will look at the accuracy rate by archetype as well. The table below shows the five most frequent and five least frequent archetypes observed in the testing data. Total is the number of times the archetype appears, Proportion Correct is the proportion of those decks that are correctly classified, and Mode Incorrect is the most common incorrect classification (missing values indicate that all decks are correctly classified).&lt;/p&gt;
 &lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;thead&gt;
@@ -242,19 +242,6 @@ Mode Incorrect
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Affinity
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-19
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-1.00
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
 Infect
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
@@ -271,7 +258,7 @@ Infect
 Jund
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-15
+17
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 1.00
@@ -287,7 +274,7 @@ Naya Burn
 15
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.67
+0.93
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 Burn
@@ -296,6 +283,19 @@ Burn
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 Tron
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+15
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Affinity
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 14
@@ -308,20 +308,7 @@ Tron
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Wb Tokens
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-1.00
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Wg Hatebears
+Wr
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 1
@@ -330,21 +317,7 @@ Wg Hatebears
 0.00
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Gw Hatebears
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Wilt-Leaf Abzan
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-1
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-0.00
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Abzan
+Wr Prison
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -363,28 +336,57 @@ Wr Prison
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
+Wr Prison
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Rw Nahiri
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Wrg
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Naya Zoo
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
 Wu Control
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 1
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-1.00
+0.00
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
+Uw Control
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Affinity and Infect are very unique decks, so it is not surprising that the algorithm correctly classifies them. Jund is very similar to many other black green midrange decks, so I was surprised they were all correctly identified. That could be because Jund is a very common archetype in the training decks, so the algorithm has enough data to separate Jund from similar decks. Naya Burn was most frequently miss classified as normal Burn, which is not very surprising.&lt;/p&gt;
-&lt;p&gt;Among the least frequent archetypes, the mistakes are not unexpected. Its possible that WG Hatebears and GW Hatebears should be the same archetype anyway, and the Wilt-Leaf Abzan deck is just a special subset of Abzan decks that play the card Wilt-Leaf Liege.&lt;/p&gt;
+&lt;p&gt;Infect, Tron, and Affinity are very unique decks, so it is not surprising that the algorithm correctly classifies them. Jund is very similar to many other black green midrange decks, so I was surprised they were all correctly identified. That could be because Jund is a very common archetype in the training decks, so the algorithm has enough data to separate Jund from similar decks. Naya Burn was most frequently miss classified as normal Burn, which is not very surprising.&lt;/p&gt;
+&lt;p&gt;Among the least frequent archetypes, the mistakes are not unexpected. Its possible that WR, WR Control, and WR Prison should be the same archetype anyway, and the difference between WU Control versus UW Control is just which color is more prevelant.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;human-improvements&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Human Improvements&lt;/h2&gt;
 &lt;p&gt;I think a lot of the time, people want their statistical model to work without any human input. However, human-level tweaks often provide significantly greater performance improvements than tweaks to the statistical methods. Three areas where an analyst with domain knowledge could improve the method are outlined below.&lt;/p&gt;
 &lt;p&gt;First, standardizing deck archetypes. I made a few changes to these but wanted to leave the data mostly raw. For example, I made “U/R Twin” and “UR Twin” the same deck, changed “Death &amp;amp; Taxes” to “Death And Taxes”, and standardized capitalization. Several remaining archetypes, however, should probably be grouped together. Some low hanging fruit are probably the 38 “Naya Through the Breach” decks and the 21 “Naya Titan Breach” decks, and the 88 “UB Tezzerator” and 26 “UB Tezzeret” decks. These kind of changes could be made incrementally as more data are added by standardizing the names of new decks and by someone who was unfamiliar with the code and statistics, but was familiar with the Modern format.&lt;/p&gt;
 &lt;p&gt;Another area an analyst could improve these results is by selectively including true zeros in the likelihood. For example, Abzan compared to Abzan Company decks differ by whether the card Collected Company is included in the list. With enough data, the algorithm will learn this distinction, but that identification could be expedited and accuracy increased if the Abzan likelihood function had a zero frequency for Collected Company. A similar method could be used to separate similar archetypes defined by color splashes, such as distinguishing Jeskai Twin, Grixis Twin, and UR Twin by including zeros for lands by which color they produce.&lt;/p&gt;
-&lt;p&gt;A third and final area more domain knowledge could help is manually reviewing low probability classifications. Let’s look at the most uncertain classifications. These six decks are the ones the algorithm had the most uncertainty about. An analyst could review the burn decks to separate which was Naya Burn and which was normal Burn (or potentially just combine those archetypes) and correctly identify color of the Eldrazi list.&lt;/p&gt;
+&lt;p&gt;A third and final area more domain knowledge could help is manually reviewing low probability classifications. Let’s look at the most uncertain classifications. These six decks are the ones the algorithm had the most uncertainty about. An analyst could review these decks to separate archetypes that are quite similar.&lt;/p&gt;
 &lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -405,13 +407,13 @@ Correct
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Eldrazi And Taxes
+Burn
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Eldrazi And Taxes
+Burn
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.63
+0.59
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 TRUE
@@ -419,27 +421,13 @@ TRUE
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Mono-White Martyr
+Mono-Blue Grand Architect
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Mono-White Martyr
+Mono-Blue Turns
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.65
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-TRUE
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Gb Eldrazi
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Colorless Eldrazi
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-0.76
+0.74
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 FALSE
@@ -447,41 +435,55 @@ FALSE
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Naya Burn
+Tasigur Burn
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Naya Burn
+Unknown
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 0.77
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-TRUE
+FALSE
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Rw Nahiri
+Mono-Blue Grand Architect
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
-Rw Nahiri
-&lt;/td&gt;
-&lt;td style=&#34;text-align:center;&#34;&gt;
-0.79
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-TRUE
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Naya Burn
-&lt;/td&gt;
-&lt;td style=&#34;text-align:left;&#34;&gt;
-Burn
+Mono-Blue Turns
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
 0.84
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+FALSE
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Mono-White Human Aggro
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Mono-White Humans
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.85
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+FALSE
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Wr Prison
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Rw Nahiri
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.90
 &lt;/td&gt;
 &lt;td style=&#34;text-align:left;&#34;&gt;
 FALSE

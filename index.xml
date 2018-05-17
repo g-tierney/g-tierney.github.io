@@ -379,7 +379,7 @@ Uw Control
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Infect, Tron, and Affinity are very unique decks, so it is not surprising that the algorithm correctly classifies them. Jund is very similar to many other black green midrange decks, so I was surprised they were all correctly identified. That could be because Jund is a very common archetype in the training decks, so the algorithm has enough data to separate Jund from similar decks. Naya Burn was most frequently miss classified as normal Burn, which is not very surprising.&lt;/p&gt;
-&lt;p&gt;Among the least frequent archetypes, the mistakes are not unexpected. Its possible that WR, WR Control, and WR Prison should be the same archetype anyway, and the difference between WU Control versus UW Control is just which color is more prevelant.&lt;/p&gt;
+&lt;p&gt;Among the least frequent archetypes, the mistakes are not unexpected. Its possible that WR, WR Control, and WR Prison should be the same archetype anyway, and the difference between WU Control versus UW Control is just which color is more prevalent.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;human-improvements&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Human Improvements&lt;/h2&gt;

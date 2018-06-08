@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Article Review on Graham Tierney</title>
+    <link>/categories/article-review/</link>
+    <description>Recent content in Article Review on Graham Tierney</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 07 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/article-review/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Article Round Up June 2018: Income Inequality, Partisan Economies, and Trump Tweets to Hate Crimes</title>
+      <link>/post/2018_06_best_reads/</link>
+      <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018_06_best_reads/</guid>
+      <description>This is my second article round up. The first is over at my old blog here. In this post, I’ll briefly cover two Atlantic articles related to economic inequality and the differing economic expectations of democrats and republicans. Most time is spent reviewing a new working paper on the correlation between Trump’s twitter activity and hate crimes, and thinking about how it could make the jump from correlation to causation.</description>
+    </item>
+    
+  </channel>
+</rss>

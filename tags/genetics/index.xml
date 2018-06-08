@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Genetics on Graham Tierney</title>
-    <link>/tags/genetics/</link>
+    <link>https://g-tierney.github.io/tags/genetics/</link>
     <description>Recent content in Genetics on Graham Tierney</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Thu, 17 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/genetics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://g-tierney.github.io/tags/genetics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The Genetics of Magic</title>
-      <link>/post/magic_classification/</link>
+      <link>https://g-tierney.github.io/post/magic_classification/</link>
       <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/magic_classification/</guid>
+      <guid>https://g-tierney.github.io/post/magic_classification/</guid>
       <description>IntroductionLast spring, I took a class on Bayesian statistics at the University of Chicago that had several exercises focused on building a model to classify species based on their genome. The basic setup was that you were given a data set of salmon, their genome sequencing data, and which sub-population they belonged to. From this data, we needed to build a model to classify new salmon into the sub-populations. The strategy was to use the fact that alleles appeared with different frequencies in the different sub-populations, so the fact that a new fish did have certain alleles and did not have others was informative about which sub-population it came from.</description>
     </item>
     

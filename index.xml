@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Graham Tierney on Graham Tierney</title>
-    <link>/</link>
+    <link>https://g-tierney.github.io/</link>
     <description>Recent content in Graham Tierney on Graham Tierney</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Article Round Up June 2018: Income Inequality, Partisan Economies, and Trump Tweets to Hate Crimes</title>
-      <link>/post/2018_06_best_reads/</link>
+      <link>https://g-tierney.github.io/post/2018_06_best_reads/</link>
       <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018_06_best_reads/</guid>
+      <guid>https://g-tierney.github.io/post/2018_06_best_reads/</guid>
       <description>&lt;p&gt;This is my second article round up. The first is over at &lt;a href=&#34;https://ticktocksaythehandsoftheclock.wordpress.com/2018/04/06/march-2018-universities-fake-news-and-drugs/&#34;&gt;my old blog here&lt;/a&gt;. In this post, I’ll briefly cover two Atlantic articles related to economic inequality and the differing economic expectations of democrats and republicans. Most time is spent reviewing a new working paper on the correlation between Trump’s twitter activity and hate crimes, and thinking about how it could make the jump from correlation to causation.&lt;/p&gt;
 &lt;div id=&#34;income-inequality&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Income Inequality&lt;/h2&gt;
@@ -39,7 +39,7 @@
 This is the main figure:
 &lt;center&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/tweets_hate_crimes.png&#34; /&gt;
+&lt;img src=&#34;https://g-tierney.github.io/img/tweets_hate_crimes.png&#34; /&gt;
 
 &lt;/div&gt;
 Figure 2: Panel (a) shows the weekly number of Donald Trump’s &lt;br/&gt; Islam-related tweets and the number of anti-Muslim hate crimes &lt;br/&gt; in the US after the start of Trump’s presidential campaign.
@@ -63,10 +63,10 @@ Figure 2: Panel (a) shows the weekly number of Donald Trump’s &lt;br/&gt; Isla
     
     <item>
       <title>The Genetics of Magic</title>
-      <link>/post/magic_classification/</link>
+      <link>https://g-tierney.github.io/post/magic_classification/</link>
       <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/magic_classification/</guid>
+      <guid>https://g-tierney.github.io/post/magic_classification/</guid>
       <description>&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Last spring, I took a class on Bayesian statistics at the University of Chicago that had several exercises focused on building a model to classify species based on their genome. The basic setup was that you were given a data set of salmon, their genome sequencing data, and which sub-population they belonged to. From this data, we needed to build a model to classify new salmon into the sub-populations. The strategy was to use the fact that alleles appeared with different frequencies in the different sub-populations, so the fact that a new fish did have certain alleles and did not have others was informative about which sub-population it came from.&lt;/p&gt;

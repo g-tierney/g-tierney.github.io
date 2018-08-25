@@ -189,7 +189,7 @@ set.seed(0515) #fix the position of nodes on the plot
 ggnet2(graph_plot,label = T,layout.exp=2,color = &amp;quot;lightskyblue2&amp;quot;) + 
   ggtitle(&amp;quot;Sample Name Network&amp;quot;) + theme(plot.title = element_text(hjust = .5,face = &amp;quot;bold&amp;quot;,size = 15))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/name_graphs_files/figure-html/plot_graph-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Now here is the code itself:&lt;/p&gt;
+&lt;p&gt;Now here is the code itself. The full script and example data are available at &lt;a href=&#34;https://github.com/g-tierney/record_linkage_graphs&#34;&gt;this Github repository&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(igraph)
 
 #add other identifiers to node names

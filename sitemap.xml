@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://g-tierney.github.io/post/name_graphs/</loc>
+      <lastmod>2018-08-25T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://g-tierney.github.io/post/2018_06_best_reads/</loc>
       <lastmod>2018-06-07T00:00:00+00:00</lastmod>
     </url>
@@ -24,7 +33,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/tags/academic/</loc>
-      <lastmod>2017-01-01T00:00:00-06:00</lastmod>
+      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
     </url>
     
   
@@ -33,7 +42,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/post/</loc>
-      <lastmod>2017-01-01T00:00:00-06:00</lastmod>
+      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
     </url>
     
   
@@ -42,7 +51,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/publication/</loc>
-      <lastmod>2017-01-01T00:00:00-06:00</lastmod>
+      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
     </url>
     
   
@@ -100,8 +109,28 @@
     
     <url>
     
+      <loc>https://g-tierney.github.io/categories/data-science/</loc>
+      <lastmod>2018-08-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://g-tierney.github.io/tags/economics/</loc>
       <lastmod>2018-06-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/fencing/</loc>
+      <lastmod>2018-08-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -121,7 +150,37 @@
     <url>
     
       <loc>https://g-tierney.github.io/</loc>
-      <lastmod>2017-10-15T00:00:00-05:00</lastmod>
+      <lastmod>2017-10-15T00:00:00-04:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/graphs/</loc>
+      <lastmod>2018-08-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/categories/methods/</loc>
+      <lastmod>2018-08-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/networks/</loc>
+      <lastmod>2018-08-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -149,6 +208,16 @@
     
     <url>
     
+      <loc>https://g-tierney.github.io/tags/record-linkage/</loc>
+      <lastmod>2018-08-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://g-tierney.github.io/tags/social-media/</loc>
       <lastmod>2018-06-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -160,7 +229,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/tags/</loc>
-      <lastmod>2017-01-01T00:00:00-06:00</lastmod>
+      <lastmod>2017-01-01T00:00:00-05:00</lastmod>
       <priority>0</priority>
     </url>
     

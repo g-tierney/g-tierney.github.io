@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0600</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0500</lastBuildDate>
     
 	<atom:link href="https://g-tierney.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Record linkage: An Adventure in Graph Theory</title>
+      <link>https://g-tierney.github.io/post/name_graphs/</link>
+      <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/name_graphs/</guid>
+      <description>Introduction I recently encountered a problem that had a surprisingly elegant solution. I struggled a lot with solving this issue, so hopefully in writing this post I can save someone else the trouble! For reasons that are irrelevant, I wanted to track the performance of youth fencers across time. National ranking lists are posted each year, but the fencers’ names frequently change from year to year. My solution was to create a dataset of all sets of two names, mark which pairs were matches, then pick a single name to use for each set of names that matched against each other.</description>
+    </item>
     
     <item>
       <title>Article Round Up June 2018: Income Inequality, Partisan Economies, and Trump Tweets to Hate Crimes</title>

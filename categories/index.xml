@@ -30,5 +30,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>Data Science</title>
+      <link>https://g-tierney.github.io/categories/data-science/</link>
+      <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/categories/data-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Methods</title>
+      <link>https://g-tierney.github.io/categories/methods/</link>
+      <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/categories/methods/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

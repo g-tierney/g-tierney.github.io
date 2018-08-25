@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.41" />
+  <meta name="author" content="Graham Tierney">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content="Introduction I recently encountered a problem that had a surprisingly elegant solution. I struggled a lot with solving this issue, so hopefully in writing this post I can save someone else the trouble! For reasons that are irrelevant, I wanted to track the performance of youth fencers across time. National ranking lists are posted each year, but the fencers’ names frequently change from year to year. My solution was to create a dataset of all sets of two names, mark which pairs were matches, then pick a single name to use for each set of names that matched against each other.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://g-tierney.github.io/post/name_graphs/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+      
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+      
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-119311402-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+
+  
+  <link rel="alternate" href="https://g-tierney.github.io/index.xml" type="application/rss+xml" title="Graham Tierney">
+  <link rel="feed" href="https://g-tierney.github.io/index.xml" type="application/rss+xml" title="Graham Tierney">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://g-tierney.github.io/post/name_graphs/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@gtyranny">
+  <meta property="twitter:creator" content="@gtyranny">
+  
+  <meta property="og:site_name" content="Graham Tierney">
+  <meta property="og:url" content="https://g-tierney.github.io/post/name_graphs/">
+  <meta property="og:title" content="Record linkage: An Adventure in Graph Theory | Graham Tierney">
+  <meta property="og:description" content="Introduction I recently encountered a problem that had a surprisingly elegant solution. I struggled a lot with solving this issue, so hopefully in writing this post I can save someone else the trouble! For reasons that are irrelevant, I wanted to track the performance of youth fencers across time. National ranking lists are posted each year, but the fencers’ names frequently change from year to year. My solution was to create a dataset of all sets of two names, mark which pairs were matches, then pick a single name to use for each set of names that matched against each other."><meta property="og:image" content="https://g-tierney.github.io/img/sample_graph.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-08-25T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-08-25T00:00:00&#43;00:00">
+  
+
+  
+  
+
+  <title>Record linkage: An Adventure in Graph Theory | Graham Tierney</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">Graham Tierney</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+<div class="article-header">
+  
+  
+    <img src="/img/sample_graph.png" class="article-banner" itemprop="image">
+  
+
+  
+</div>
+
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Record linkage: An Adventure in Graph Theory</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+    <time datetime="2018-08-25 00:00:00 &#43;0000 UTC" itemprop="datePublished dateModified">
+      Aug 25, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Graham Tierney">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="https://g-tierney.github.io/categories/data-science/">Data Science</a
+    >, 
+    
+    <a href="https://g-tierney.github.io/categories/methods/">Methods</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Record%20linkage%3a%20An%20Adventure%20in%20Graph%20Theory&amp;url=https%3a%2f%2fg-tierney.github.io%2fpost%2fname_graphs%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fg-tierney.github.io%2fpost%2fname_graphs%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fg-tierney.github.io%2fpost%2fname_graphs%2f&amp;title=Record%20linkage%3a%20An%20Adventure%20in%20Graph%20Theory"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fg-tierney.github.io%2fpost%2fname_graphs%2f&amp;title=Record%20linkage%3a%20An%20Adventure%20in%20Graph%20Theory"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Record%20linkage%3a%20An%20Adventure%20in%20Graph%20Theory&amp;body=https%3a%2f%2fg-tierney.github.io%2fpost%2fname_graphs%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>I recently encountered a problem that had a surprisingly elegant solution. I struggled a lot with solving this issue, so hopefully in writing this post I can save someone else the trouble! For reasons that are irrelevant, I wanted to track the performance of youth fencers across time. National ranking lists are posted each year, but the fencers’ names frequently change from year to year. My solution was to create a dataset of all sets of two names, mark which pairs were matches, then pick a single name to use for each set of names that matched against each other. My mistaken belief was that the second step would be the hardest, but actually the third was the most difficult.</p>
+</div>
+<div id="the-problem" class="section level2">
+<h2>The Problem</h2>
+<p>The data I had were end-of-season rankings for youth fencers by age, gender, and weapon. The only identifier to link fencers across years was their name and year of birth. However, the names are notoriously difficult to standardize. Some years a kid goes by John, others its Jonathan, and maybe a third time its John Smith IV. Numeric suffixes seemed quite overrepresented among fencers relative to the general population. Some Asian fencers would go by a phonetic spelling of their given name in one year then use an English name in the next.</p>
+</div>
+<div id="solution-part-1-the-surprisingly-easy-part" class="section level2">
+<h2>Solution Part 1: The (Surprisingly) Easy Part</h2>
+<p>I joined the list of names (along with the other less granular identifiers) to itself on the less granular identifiers to get a list of all pairs of names that had the same age, gender, and weapon. I removed pairs whose last names required more than three deletions, insertions, or single-letter transformations to match (the Levenshtein distance). I then tasked two undergraduate RAs to independently inspect each pair and mark the ones that could be the same name, then resolve any discrepancies in the matches they found.</p>
+<p>I had thought this step, reviewing each pair of names, would be the most time-consuming, but it actually was rather quick. The 11,211 were reviewed and mismatched in less than 8 hours of work per RA. A snapshot of the final dataset is shown below.</p>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+match
+</th>
+<th style="text-align:left;">
+name_key
+</th>
+<th style="text-align:left;">
+name_key2
+</th>
+<th style="text-align:left;">
+gender
+</th>
+<th style="text-align:left;">
+weapon
+</th>
+<th style="text-align:right;">
+bthyear
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+aaron.ahn
+</td>
+<td style="text-align:left;">
+albert.park
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:right;">
+1997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+aaron.ahn
+</td>
+<td style="text-align:left;">
+albert.park
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:right;">
+1997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+aaron.ahn
+</td>
+<td style="text-align:left;">
+bin.ahn
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:right;">
+1997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+aaron.ahn
+</td>
+<td style="text-align:left;">
+royce.wang
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:right;">
+1997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+aaron.ahn
+</td>
+<td style="text-align:left;">
+mikolaj.bak
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:right;">
+1997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+aaron.ahn
+</td>
+<td style="text-align:left;">
+eric.zhang
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:right;">
+1997
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="solution-part-2-the-hard-part" class="section level2">
+<h2>Solution Part 2: The Hard Part</h2>
+<p>After this dataset of matches was created, I needed to identify for each name, all other names that matched with it, then pick one of those names to use as the “real” name. The operations required to do this were surprisingly challenging. Each name appeared in both name_key columns, so any grouping had to be done on two variables. It also requires a consistent operation that will select the same “real” name for each name within the matches. I was struggling to implement this solution on the rectangular dataframe. I needed to group by names in two variables, spread unique values of two variables into multiple columns, then consistently select one of those entries. Certainly, there is a way to do this, but it was not intuitive to me and I suspect it would be quite a slow operation.</p>
+<p>Eventually, I realized that instead of trying to operate on the data as a matrix with variables in columns and observations in rows, I should treat the data as a graph. Each name was a node, and edges represent names that were matched. Each connected graph within the disconnected graph of all names represented a single “real” name. To extract what I needed, I just had list each node and which graph it was in, then arbitrarily pick one node from each graph to be the “real” name.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Fortunately, people who write much better R code than me have developed tools to operate on graphs quickly and efficiently. What took me hours to (unsuccessfully) do on a rectangular dataframe took approximately 30 minutes using graph operations. A quick visualization of the graph is below.</p>
+<pre class="r"><code>graph_plot &lt;- suppressWarnings(graph.data.frame(name_matches[1:100,]  %&gt;% filter(match == 1) %&gt;% select(name_key,name_key2),directed = F))
+
+#remove duplicated edges
+graph_plot &lt;- graph_plot %&gt;% simplify() 
+
+set.seed(0515) #fix the position of nodes on the plot
+ggnet2(graph_plot,label = T,layout.exp=2,color = &quot;lightskyblue2&quot;) + 
+  ggtitle(&quot;Sample Name Network&quot;) + theme(plot.title = element_text(hjust = .5,face = &quot;bold&quot;,size = 15))</code></pre>
+<p><img src="/post/name_graphs_files/figure-html/plot_graph-1.png" width="672" /></p>
+<p>Now here is the code itself:</p>
+<pre class="r"><code>library(igraph)
+
+#add other identifiers to node names
+combine_ids &lt;- function(...){
+  str_c(...,sep = &quot;_&quot;)
+}
+name_matches &lt;- name_matches %&gt;% rowwise() %&gt;% 
+  mutate(name_key = combine_ids(name_key,gender,weapon,bthyear),
+         name_key2 = combine_ids(name_key2,gender,weapon,bthyear)) 
+
+#turn data into a graph
+graph &lt;- graph.data.frame(name_matches %&gt;% filter(match == 1) %&gt;% select(name_key,name_key2),directed = F)
+dg &lt;- decompose.graph(graph)
+
+#list names of verticies grouped by connected graphs
+name_links &lt;- map(dg,function(x){V(x)$name})
+
+#combine into a single dataframe to merge
+make_df &lt;- function(list_element){
+  vec &lt;- unlist(list_element)
+  std_name &lt;- str_split(vec[1],&quot;_&quot;,simplify = T)[1]
+  data.frame(name_key_combined = vec,std_name = std_name,stringsAsFactors = F)
+}
+name_standardizations &lt;- do.call(rbind,map(name_links,make_df))
+
+#spread identifiers back into multiple columns
+name_standardizations &lt;- name_standardizations %&gt;% separate(name_key_combined,into = c(&quot;name_key&quot;,&quot;gender&quot;,&quot;weapon&quot;,&quot;bthyear&quot;),sep = &quot;_&quot;)
+name_standardizations[1:7,] %&gt;% kableExtra::kable(format = &quot;html&quot;) %&gt;% 
+  kableExtra::kable_styling(bootstrap_options = &quot;striped&quot;,full_width = F)</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+name_key
+</th>
+<th style="text-align:left;">
+gender
+</th>
+<th style="text-align:left;">
+weapon
+</th>
+<th style="text-align:left;">
+bthyear
+</th>
+<th style="text-align:left;">
+std_name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+abagael.a.buckborough
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+sabre
+</td>
+<td style="text-align:left;">
+1999
+</td>
+<td style="text-align:left;">
+abagael.a.buckborough
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abagael.r.buckborough
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+sabre
+</td>
+<td style="text-align:left;">
+1999
+</td>
+<td style="text-align:left;">
+abagael.a.buckborough
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abby.buckborough
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+sabre
+</td>
+<td style="text-align:left;">
+1999
+</td>
+<td style="text-align:left;">
+abagael.a.buckborough
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abby.emerson
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:left;">
+1987
+</td>
+<td style="text-align:left;">
+abby.emerson
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abigail.emerson
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:left;">
+1987
+</td>
+<td style="text-align:left;">
+abby.emerson
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abby.schifferle
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:left;">
+1988
+</td>
+<td style="text-align:left;">
+abby.schifferle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+abigail.schifferle
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:left;">
+foil
+</td>
+<td style="text-align:left;">
+1988
+</td>
+<td style="text-align:left;">
+abby.schifferle
+</td>
+</tr>
+</tbody>
+</table>
+<p>The lesson I learned from this experience was the importance of taking a step back from a difficult problem and approaching it from a different angle. Not thinking of data as a matrix of numbers was instrumental to solving this particular problem and is likely key to solving many others.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Incidentally, I think the reason I came up with this idea was I was researching professors at Ph.D. programs I was accepted to, and one of them, Rebecca Steorts, mentioned research on record linkage using graphs in her research interests.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="https://g-tierney.github.io/tags/record-linkage/">Record Linkage</a>
+  
+  <a class="btn btn-primary btn-outline" href="https://g-tierney.github.io/tags/fencing/">Fencing</a>
+  
+  <a class="btn btn-primary btn-outline" href="https://g-tierney.github.io/tags/graphs/">Graphs</a>
+  
+  <a class="btn btn-primary btn-outline" href="https://g-tierney.github.io/tags/networks/">Networks</a>
+  
+</div>
+
+
+
+
+    
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

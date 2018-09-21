@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/post/2018_09_mental_health/</loc>
@@ -10,7 +9,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -20,7 +18,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/post/2018_06_best_reads/</loc>
@@ -28,7 +25,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -38,7 +34,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/academic/</loc>
@@ -46,7 +41,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -56,7 +50,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/publication/</loc>
@@ -64,7 +57,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -75,7 +67,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/bayesian/</loc>
@@ -84,7 +75,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -95,7 +85,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/classification/</loc>
@@ -104,7 +93,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -115,6 +103,14 @@
     
   
     
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/data-science/</loc>
+      <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
     
     <url>
     
@@ -125,7 +121,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/economics/</loc>
@@ -134,7 +129,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -145,7 +139,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/genetics/</loc>
@@ -154,7 +147,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -165,7 +157,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/graphs/</loc>
@@ -175,6 +166,14 @@
     
   
     
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/mental-health/</loc>
+      <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
     
     <url>
     
@@ -185,7 +184,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/networks/</loc>
@@ -194,7 +192,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -205,7 +202,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/publication_types/</loc>
@@ -213,7 +209,6 @@
     </url>
     
   
-    
     
     <url>
     
@@ -224,7 +219,6 @@
     
   
     
-    
     <url>
     
       <loc>https://g-tierney.github.io/tags/social-media/</loc>
@@ -233,7 +227,6 @@
     </url>
     
   
-    
     
     <url>
     

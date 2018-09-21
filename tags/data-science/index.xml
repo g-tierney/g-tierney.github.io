@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science on Graham Tierney</title>
+    <link>https://g-tierney.github.io/tags/data-science/</link>
+    <description>Recent content in Data Science on Graham Tierney</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://g-tierney.github.io/tags/data-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Science in Mental Health</title>
+      <link>https://g-tierney.github.io/post/2018_09_mental_health/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/2018_09_mental_health/</guid>
+      <description>I came across two articles recently that I thought spoke to each other in an interesting way. The first was a New York Times piece about the failings of data science firms who try to identify school shootings before they happen by social media posts. The second was a Vox article about how a crisis counseling hotline successfully used data science to flag callers who are at higher risk of suicide or self-harm.</description>
+    </item>
+    
+  </channel>
+</rss>

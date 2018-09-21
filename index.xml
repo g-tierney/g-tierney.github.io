@@ -11,12 +11,49 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Data Science in Mental Health</title>
+      <link>https://g-tierney.github.io/post/2018_09_mental_health/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/2018_09_mental_health/</guid>
+      <description>&lt;p&gt;I came across two articles recently that I thought spoke to each other in an interesting way. The first was a New York Times piece about the failings of data science firms who try to identify school shootings before they happen by social media posts. The second was a Vox article about how a crisis counseling hotline successfully used data science to flag callers who are at higher risk of suicide or self-harm.&lt;/p&gt;
+&lt;p&gt;I have some specific thoughts on both, but I think the comparison between the two articles shows why a data-driven approach is helpful in one case and not the other.&lt;/p&gt;
+&lt;div id=&#34;a-failure-predicting-school-shootings&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A Failure: Predicting School Shootings&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.nytimes.com/2018/09/06/us/social-media-monitoring-school-shootings.html&#34; target=&#34;_blank&#34;&gt;“Could Monitoring Students on Social Media Stop the Next School Shooting?” by Aaron Leibowitz&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This article reviews the services that several companies are providing to school districts by monitoring public posts by students on social media. These companies usually scrape data from all posts in a geographic region around the school. “Rather than asking schools for a list of students and social media handles, the companies typically employ a method called “geofencing” to sweep up posts within a given geographic area and use keywords to narrow the pool.”&lt;/p&gt;
+&lt;p&gt;However, as you can imagine, this wide of a net ends up flagging posts from many people unaffiliated with the school. One school in Ohio was warned about someone posting “There’s three seasons: summer, construction season and school shooting season.” Further investigation discovered that the poster was from Wisconsin not Ohio. Another school that hired one of these firms was close to a liquor store, and the firm couldn’t separate tweets about the store and the school. In general, the problem seems to be that in the available data, any signals, if they exist, are swamped by the noise.&lt;/p&gt;
+&lt;p&gt;This monitoring also brought up some philosophical questions about what out-of-school actions should have in-school consequences. A case of a school that hired an outside firm to review students’ posts on social media expelled 14 students. Some of the allegations are described below:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;One student had been accused of “holding too much money” in photographs, an investigation by the Southern Poverty Law Center found, and one was suspended for an Instagram post in which she wore a sweatshirt with an airbrushed image of her father, a murder victim. School officials said the sweatshirt’s colors and the student’s hand symbol were evidence of gang ties, according to the investigation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I can understand an administrator’s desire to punish students for some out-of-school actions, but these seem like they’ve gone too far. School officials who suddenly have access to &lt;em&gt;all&lt;/em&gt; public activity of their students need to think harder about what kind of actions they want to police. Especially if they want to continue to monitor students’ activities for more serious transgressions, officials need to be tolerant of activities they may disapprove of to keep that information channel open. I’m sure that many fewer students made any public posts after these expulsions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-success-identifying-high-risk-callers-to-a-crisis-hotline&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A Success: Identifying High-Risk Callers to a Crisis Hotline&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.vox.com/science-and-health/2018/6/8/17441452/suicide-prevention-anthony-bourdain-crisis-text-line-data-science&#34; target=&#34;_blank&#34;&gt;“How data scientists are using AI for suicide prevention” by Brian Resnick&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A more heartening case is this article about the data science team at Crisis Text Line. CTL provides crisis counseling via text message to anyone who requests it. Certain events cause dramatic increases in demand for their services; Robin Williams’s suicide and the 2015 terrorist attack in Paris are two examples. The volunteers working at the time cannot handle everyone at once, so they used machine learning to prioritize incoming requests based on the text message rather than using the order the requests came in. The words most predictive of an active rescue (when 911 is called) were the names of household drugs like Advil or Ibuprofen, even the crying face emoji was more predictive than the word “suicide” and other words like “cut” and “kill” that the company had thought would be good predictors previously.&lt;/p&gt;
+&lt;p&gt;Something I wondered throughout this piece was what really was the “machine learning” being used and did it really rise to the level of artificial intelligence? It sounds like the analysis could have been simply computed by a simple logistic regression of active rescue on indicators for which words were used in the first message. It sounds a bit pedantic, but I think overuse of buzzwords like machine learning and AI discourage people who would have valuable insights or could produce data analysis of similar rigor and results from looking into these problems. For a longer read on how data is being used (and not used) in the counseling profession, check out this &lt;a href=&#34;https://www.theatlantic.com/magazine/archive/2017/04/what-your-therapist-doesnt-know/517797/&#34;&gt;Atlantic piece&lt;/a&gt; that was linked in the Vox article.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-was-the-difference&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What was the difference?&lt;/h2&gt;
+&lt;p&gt;Both CTL and the school shooting programs were trying to predict individual behavior from limited textual data. I think the difference is that the event they wanted to detect was much more frequent and observable in the studied population.&lt;/p&gt;
+&lt;p&gt;My intuition is that the proportion of school shooters among everyone living near a school is significantly smaller than the proportion of callers to a crisis hotline who need an active rescue. The most credible estimates are that in the 2015-2016 school year there were &lt;a href=&#34;https://theconversation.com/why-theres-so-much-inconsistency-in-school-shooting-data-102318&#34; target=&#34;_blank&#34;&gt;11 to 29&lt;/a&gt; school shootings across the country. The data on social media posts by the shooters has to be even more scarce. Statistical methods to identify which features are predictive of a given event need data from when the event does and does not occur. The school security firms, lacking many data on what shooters post before they bring a gun to school, ended up simply referring “violent-sounding” messages to school officials, without being able to specify how likely that person was to actually be violent at school. That determination was left up to school officials who, given discretion, appear to have made some poor choices about what kinds of messages merited a response. I would not be surprised if part of the justification school administrators had in mind was that the data science firm flagged the message because they thought the person would be violent at school. When in reality, the firm isn’t doing any data-based prediction on what messages correlate with actual violence.&lt;/p&gt;
+&lt;p&gt;CTL, however, had a clear outcome variable and data on both callers who did and did not need active rescue. They were able to build a statistical model and identify predictive features of the incoming messages to effectively allocate resources. CTL had the appropriate labeled data, but the schools only had a limited selection of messages from students who had not yet (and might never be) violent at school.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Record linkage: An Adventure in Graph Theory</title>
       <link>https://g-tierney.github.io/post/name_graphs/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
       
       <guid>https://g-tierney.github.io/post/name_graphs/</guid>
-      <description>&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+      <description>&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;I recently encountered a problem that had a surprisingly elegant solution. I struggled a lot with solving this issue, so hopefully in writing this post I can save someone else the trouble! For reasons that are irrelevant, I wanted to track the performance of youth fencers across time. National ranking lists are posted each year, but the fencers’ names frequently change from year to year. My solution was to create a dataset of all sets of two names, mark which pairs were matches, then pick a single name to use for each set of names that matched against each other. My mistaken belief was that the second step would be the hardest, but actually the third was the most difficult.&lt;/p&gt;
 &lt;/div&gt;
@@ -429,7 +466,10 @@ Figure 2: Panel (a) shows the weekly number of Donald Trump’s &lt;br/&gt; Isla
       <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://g-tierney.github.io/post/magic_classification/</guid>
-      <description>&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+      <description>&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Last spring, I took a class on Bayesian statistics at the University of Chicago that had several exercises focused on building a model to classify species based on their genome. The basic setup was that you were given a data set of salmon, their genome sequencing data, and which sub-population they belonged to. From this data, we needed to build a model to classify new salmon into the sub-populations. The strategy was to use the fact that alleles appeared with different frequencies in the different sub-populations, so the fact that a new fish did have certain alleles and did not have others was informative about which sub-population it came from.&lt;/p&gt;
 &lt;p&gt;This problem and solution struck me as being very similar to an issue near and dear to my heart: classifying decks into archetypes in collectible card games (CCGs). Specifically, Magic the Gathering. One could think of alleles as analogues for cards and the sub-populations as analogues for deck archetypes (UW Control, Jund, Merfolk, etc.). In this post, I will describe how to apply a Bayesian classification algorithm to this scenario and discuss some of its advantages. I assume the reader has familiarity with basic mathematical probability and statistics. I also will not show proofs for the mathematical claims that I make, but I will try to explain the intuition behind the concepts. Knowing the application area, collectible card games and Magic, will be necessary to understand the examples.&lt;/p&gt;

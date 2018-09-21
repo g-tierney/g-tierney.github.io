@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Data Science in Mental Health</title>
+      <link>https://g-tierney.github.io/post/2018_09_mental_health/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/2018_09_mental_health/</guid>
+      <description>I came across two articles recently that I thought spoke to each other in an interesting way. The first was a New York Times piece about the failings of data science firms who try to identify school shootings before they happen by social media posts. The second was a Vox article about how a crisis counseling hotline successfully used data science to flag callers who are at higher risk of suicide or self-harm.</description>
+    </item>
+    
+    <item>
       <title>Record linkage: An Adventure in Graph Theory</title>
       <link>https://g-tierney.github.io/post/name_graphs/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
@@ -36,7 +45,7 @@
       <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://g-tierney.github.io/post/magic_classification/</guid>
-      <description>Introduction Last spring, I took a class on Bayesian statistics at the University of Chicago that had several exercises focused on building a model to classify species based on their genome. The basic setup was that you were given a data set of salmon, their genome sequencing data, and which sub-population they belonged to. From this data, we needed to build a model to classify new salmon into the sub-populations. The strategy was to use the fact that alleles appeared with different frequencies in the different sub-populations, so the fact that a new fish did have certain alleles and did not have others was informative about which sub-population it came from.</description>
+      <description>Introduction Last spring, I took a class on Bayesian statistics at the University of Chicago that had several exercises focused on building a model to classify species based on their genome. The basic setup was that you were given a data set of salmon, their genome sequencing data, and which sub-population they belonged to. From this data, we needed to build a model to classify new salmon into the sub-populations.</description>
     </item>
     
   </channel>

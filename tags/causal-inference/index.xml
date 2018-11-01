@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Causal Inference on Graham Tierney</title>
+    <link>/tags/causal-inference/</link>
+    <description>Recent content in Causal Inference on Graham Tierney</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/causal-inference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Reviews: The Book of Why and Bad Blood</title>
+      <link>/post/2018_10_books/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018_10_books/</guid>
+      <description>Judea Pearle’s The Book of Why: The New Science of Cause and Effect I was honestly surprised by how much I liked this book. It covers Pearle’s new work on causal diagrams, directed graphs were each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously “squishy” arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.</description>
+    </item>
+    
+  </channel>
+</rss>

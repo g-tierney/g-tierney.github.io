@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>https://g-tierney.github.io/post/2018_10_books/</loc>
+      <lastmod>2018-10-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://g-tierney.github.io/post/2018_09_mental_health/</loc>
       <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     </url>
@@ -21,6 +29,14 @@
     <url>
     
       <loc>https://g-tierney.github.io/post/2018_06_best_reads/</loc>
+      <lastmod>2018-06-07T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/post/2018_09_best_reads/</loc>
       <lastmod>2018-06-07T00:00:00+00:00</lastmod>
     </url>
     
@@ -61,7 +77,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/categories/article-review/</loc>
-      <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+      <lastmod>2018-10-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -79,7 +95,16 @@
     <url>
     
       <loc>https://g-tierney.github.io/categories/</loc>
-      <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+      <lastmod>2018-10-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/causal-inference/</loc>
+      <lastmod>2018-10-07T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -105,7 +130,7 @@
     
     <url>
     
-      <loc>https://g-tierney.github.io/tags/data-science/</loc>
+      <loc>https://g-tierney.github.io/categories/data-science/</loc>
       <lastmod>2018-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -114,7 +139,7 @@
     
     <url>
     
-      <loc>https://g-tierney.github.io/categories/data-science/</loc>
+      <loc>https://g-tierney.github.io/tags/data-science/</loc>
       <lastmod>2018-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

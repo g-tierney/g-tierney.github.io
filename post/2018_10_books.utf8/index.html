@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 2.4.0">
+  <meta name="generator" content="Hugo 0.48" />
+  <meta name="author" content="Graham Tierney">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Some thoughts on how to build causal graphs and the role of privilege in taking down Theranos. ">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/2018_10_books.utf8/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-119311402-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Graham Tierney">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Graham Tierney">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/2018_10_books.utf8/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Graham Tierney">
+  <meta property="og:url" content="/post/2018_10_books.utf8/">
+  <meta property="og:title" content="Reviews: The Book of Why and Bad Blood | Graham Tierney">
+  <meta property="og:description" content="Some thoughts on how to build causal graphs and the role of privilege in taking down Theranos. ">
+  
+  
+    
+  <meta property="og:image" content="/img/headers/why_blood.png">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-10-07T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-10-07T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Reviews: The Book of Why and Bad Blood | Graham Tierney</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Graham Tierney</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#publications">
+            
+            <span>Publications</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#teaching">
+            
+            <span>Teaching</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+<div class="article-header">
+  
+  
+    <img src="/img/headers/why_blood.png" class="article-banner" itemprop="image">
+  
+
+  
+</div>
+
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Reviews: The Book of Why and Bad Blood</h1>
+
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Graham Tierney">
+  </span>
+  
+
+  <span class="article-date">
+    
+    <meta content="2018-10-07 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2018-10-07 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      Oct 7, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Graham Tierney">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="/categories/article-review/">Article Review</a>
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Reviews%3a%20The%20Book%20of%20Why%20and%20Bad%20Blood&amp;url=%2fpost%2f2018_10_books.utf8%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=%2fpost%2f2018_10_books.utf8%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2f2018_10_books.utf8%2f&amp;title=Reviews%3a%20The%20Book%20of%20Why%20and%20Bad%20Blood"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2f2018_10_books.utf8%2f&amp;title=Reviews%3a%20The%20Book%20of%20Why%20and%20Bad%20Blood"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Reviews%3a%20The%20Book%20of%20Why%20and%20Bad%20Blood&amp;body=%2fpost%2f2018_10_books.utf8%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>###Judea Pearle&rsquo;s <a href="https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/" target="_blank">The Book of Why: The New Science of Cause and Effect</a></p>
+
+<p>I was honestly surprised by how much I liked this book. It covers Pearle&rsquo;s new work on causal diagrams, directed graphs were each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously &ldquo;squishy&rdquo; arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.</p>
+
+<p>For a little bit of background, usually when a researcher makes a causal claim about observational data (not a randomized control trial), they also specify some assumptions about how the variables need to relate to one another for the result to be causal not just correlational. Often these are justified by subject area knowledge or, when possible, other data analyses. Pearle&rsquo;s causal diagrams, he claims, are easier to understand and interpret than written out descriptions of the model and assumptions.</p>
+
+<p>What I found particularly entertaining in this book were the shots Pearle took at other practitioners, notably statisticians and economists, who he claims have thrown up their hands and abandoned causation as too difficult to prove. I can certainly sympathize with this view, particularly among economists, who I think are often too reluctant to make causal claims without randomized experiments.</p>
+
+<p>However, throughout the book I constantly expected the next chapter to be about how to draw these diagrams. The examples he used were often related to smoking and lung cancer, where we have a very strong existing understanding of the causal mechanisms. But the diagrams seem much less helpful when you are not certain about which edges exist (and in which direction), or even what variables should be represented. The answer might delve too deep into epistemology (how do we &ldquo;know&rdquo; an empirical relationship exists), but it seems like a central question to the utility of these diagrams. The data analyst might rely on experts for the diagram, but I think many of the issues in causal inference come not from the ability to explain the causal assumptions but rather in justifying those assumptions.</p>
+
+<p>Of course if an expert hands you a list of relationships that are accepted conventional wisdom in the field, a data analyst could do the causal analysis. But that never really happens outside of a few contrived subject areas. Particularly in social sciences, almost no relationships are accepted as true. Social structures even change over time, so the fact that some correlation held in the past is not always a good justification for using it in a causal diagram about current trends. To me, its always seemed easiest to make causal inferences when you have a strong understanding of the subject area. Going from a list of beliefs to a directed graph might help formalizing the mathematical definitions of cause and effect, but it really doesn&rsquo;t seem like it would help much in practice because the hard part is getting that list and quantifying uncertainty about the list.</p>
+
+<p>An area where I do understand how the diagrams are useful is when Pearle discussed how to teach causation to machines. A list of beliefs is quite hard for a computer to understand, but a directed graph referring to how each variable causes changes in others does sound very machine-interpret-able. The problem of generating the list still seems hard, but the notion of how do you tell a computer that X causes Y and not the reverse was pretty interesting.</p>
+
+<h3 id="john-carreyrou-s-bad-blood-the-theranos-story-https-www-amazon-com-bad-blood-secrets-silicon-startup-ebook-dp-b078vw3vm7">John Carreyrou&rsquo;s <a href="https://www.amazon.com/Bad-Blood-Secrets-Silicon-Startup-ebook/dp/B078VW3VM7/" target="_blank">Bad Blood: The Theranos Story</a></h3>
+
+<p>This was a really fascinating rundown of how a well-regarded start-up collapsed. The short of it is that the promises made by the founder and CEO Elizabeth Holmes about being able to run hundreds of medical tests on a single drop of blood were lies. Employees who raised concerns that the tests were not accurate or that the product just didn&rsquo;t work were told that they weren&rsquo;t ``team players,&rdquo; fired, and forced to sign non-disclosure agreements. Through a mixture of deceit (showing &ldquo;live&rdquo; demos that were actually recordings of results), strong branding, and an idea that, if it had worked, would genuinely have been revolutionary, she convinced senior executives and officials at a variety of institutions to buy into her company and her personally. When results did not look good or deadlines were not met, the executives made excuses or accepted the delays because they believed in the grand vision of revolutionizing health care.</p>
+
+<p>The story is well chronicled in the book and the popular press, so I&rsquo;ll just highlight one of my takeaways that I haven&rsquo;t seen discussed elsewhere. A lot of the information John Carreyrou gathered would have been impossible without Theranos hiring some wealthy and well-connected Stanford graduates. The former employees who spoke to Carreyrou had to bear significant legal risk. Theranos had paid David Boise, one of the most feared attorneys in the country, with company shares and his law firm vigorously enforced the NDAs employees had signed. They hired investigators to follow ex-employees who they suspected were talking to journalists. Theranos both threatened to sue and actually sued potential whistleblowers. One of Carreyrou&rsquo;s main informants was a Stanford graduate who had wealthy parents and was the grandson of a former Secretary of State. He (his parents) had the financial resources to weather the legal attacks until the story broke, while other whistleblowers (quite rationally) backed out after threats of litigation.</p>
+
+<p>Existing whistleblower statutes were certainly not enough to protect the former Theranos employees who had concerns. It should not be only privileged white men who can take the risk of reporting the companies that they work for.</p>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/causal-inference/">Causal Inference</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/post/2018_10_books.knit/">Reviews: The Book of Why and Bad Blood</a></li>
+        
+        <li><a href="/post/2018_10_books/">Reviews: The Book of Why and Bad Blood</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2018 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: { linebreaks: { automatic: true } },
+        tex2jax: { inlineMath: [ ['$', '$'], ['\\(','\\)'] ], displayMath: [ ['$$','$$'], ['\\[', '\\]'] ], processEscapes: false },
+        TeX: { noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } } },
+        messageStyle: 'none'
+      });
+    </script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "Search Results",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+  </body>
+</html>
+

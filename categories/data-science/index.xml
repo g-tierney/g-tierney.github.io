@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Data Science on Graham Tierney</title>
-    <link>/categories/data-science/</link>
+    <link>https://g-tierney.github.io/categories/data-science/</link>
     <description>Recent content in Data Science on Graham Tierney</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://g-tierney.github.io/categories/data-science/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Data Science in Mental Health</title>
-      <link>/post/2018_09_mental_health/</link>
+      <link>https://g-tierney.github.io/post/2018_09_mental_health/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018_09_mental_health/</guid>
+      <guid>https://g-tierney.github.io/post/2018_09_mental_health/</guid>
       <description>I came across two articles recently that I thought spoke to each other in an interesting way. The first was a New York Times piece about the failings of data science firms who try to identify school shootings before they happen by social media posts. The second was a Vox article about how a crisis counseling hotline successfully used data science to flag callers who are at higher risk of suicide or self-harm.</description>
     </item>
     
     <item>
       <title>Record linkage: An Adventure in Graph Theory</title>
-      <link>/post/name_graphs/</link>
+      <link>https://g-tierney.github.io/post/name_graphs/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/name_graphs/</guid>
+      <guid>https://g-tierney.github.io/post/name_graphs/</guid>
       <description>Introduction I recently encountered a problem that had a surprisingly elegant solution. I struggled a lot with solving this issue, so hopefully in writing this post I can save someone else the trouble! For reasons that are irrelevant, I wanted to track the performance of youth fencers across time. National ranking lists are posted each year, but the fencers’ names frequently change from year to year. My solution was to create a dataset of all sets of two names, mark which pairs were matches, then pick a single name to use for each set of names that matched against each other.</description>
     </item>
     

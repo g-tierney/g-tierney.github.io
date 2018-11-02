@@ -18,7 +18,7 @@
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>https://g-tierney.github.io/post/2018_10_books/</guid>
-      <description>Judea Pearl’s The Book of Why: The New Science of Cause and Effect I was honestly surprised by how much I liked this book. It covers Pearl’s new work on causal diagrams, directed graphs were each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously “squishy” arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.</description>
+      <description>Judea Pearl’s The Book of Why: The New Science of Cause and Effect I was honestly surprised by how much I liked this book. It covers Pearl’s new work on causal diagrams, directed graphs where each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously “squishy” arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.</description>
     </item>
     
     <item>

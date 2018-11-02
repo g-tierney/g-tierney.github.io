@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Graham Tierney</title>
-    <link>/categories/</link>
+    <link>https://g-tierney.github.io/categories/</link>
     <description>Recent content in Categories on Graham Tierney</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 07 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Nov 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://g-tierney.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Article Review</title>
-      <link>/categories/article-review/</link>
-      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+      <link>https://g-tierney.github.io/categories/article-review/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/article-review/</guid>
+      <guid>https://g-tierney.github.io/categories/article-review/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Analysis</title>
-      <link>/categories/data-analysis/</link>
+      <link>https://g-tierney.github.io/categories/data-analysis/</link>
       <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/data-analysis/</guid>
+      <guid>https://g-tierney.github.io/categories/data-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Data Science</title>
-      <link>/categories/data-science/</link>
+      <link>https://g-tierney.github.io/categories/data-science/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/data-science/</guid>
+      <guid>https://g-tierney.github.io/categories/data-science/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Methods</title>
-      <link>/categories/methods/</link>
+      <link>https://g-tierney.github.io/categories/methods/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/categories/methods/</guid>
+      <guid>https://g-tierney.github.io/categories/methods/</guid>
       <description></description>
     </item>
     

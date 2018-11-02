@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Graham Tierney on Graham Tierney</title>
-    <link>/</link>
+    <link>https://g-tierney.github.io/</link>
     <description>Recent content in Graham Tierney on Graham Tierney</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,36 +12,41 @@
     
     <item>
       <title>Reviews: The Book of Why and Bad Blood</title>
-      <link>/post/2018_10_books/</link>
-      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+      <link>https://g-tierney.github.io/post/2018_10_books/</link>
+      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018_10_books/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../../static/img/bookofwhy.jpg&#34; /&gt;&lt;img src=&#34;../../static/img/badblood.png&#34; /&gt;&lt;/p&gt;
-&lt;div id=&#34;judea-pearles-the-book-of-why-the-new-science-of-cause-and-effect&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Judea Pearle’s &lt;a href=&#34;https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/&#34;&gt;The Book of Why: The New Science of Cause and Effect&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;I was honestly surprised by how much I liked this book. It covers Pearle’s new work on causal diagrams, directed graphs were each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously “squishy” arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.&lt;/p&gt;
-&lt;p&gt;For a little bit of background, usually when a researcher makes a causal claim about observational data (not a randomized control trial), they also specify some assumptions about how the variables need to relate to one another for the result to be causal not just correlational. Often these are justified by subject area knowledge or, when possible, other data analyses. Pearle’s causal diagrams, he claims, are easier to understand and interpret than written out descriptions of the model and assumptions.&lt;/p&gt;
-&lt;p&gt;What I found particularly entertaining in this book were the shots Pearle took at other practitioners, notably statisticians and economists, who he claims have thrown up their hands and abandoned causation as too difficult to prove. I can certainly sympathize with this view, particularly among economists, who I think are often too reluctant to make causal claims without randomized experiments.&lt;/p&gt;
+      <guid>https://g-tierney.github.io/post/2018_10_books/</guid>
+      <description>
+
+
+&lt;div id=&#34;judea-pearls-the-book-of-why-the-new-science-of-cause-and-effect&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Judea Pearl’s &lt;a href=&#34;https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/&#34;&gt;The Book of Why: The New Science of Cause and Effect&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I was honestly surprised by how much I liked this book. It covers Pearl’s new work on causal diagrams, directed graphs were each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously “squishy” arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.&lt;/p&gt;
+&lt;p&gt;For a little bit of background, usually when a researcher makes a causal claim about observational data (not a randomized control trial), they also specify some assumptions about how the variables need to relate to one another for the result to be causal not just correlational. Often these are justified by subject area knowledge or, when possible, other data analyses. Pearl’s causal diagrams, he claims, are easier to understand and interpret than written out descriptions of the model and assumptions.&lt;/p&gt;
+&lt;p&gt;What I found particularly entertaining in this book were the shots Pearl took at other practitioners, notably statisticians and economists, who he claims have thrown up their hands and abandoned causation as too difficult to prove. I can certainly sympathize with this view, particularly among economists, who I think are often too reluctant to make causal claims without randomized experiments.&lt;/p&gt;
 &lt;p&gt;However, throughout the book I constantly expected the next chapter to be about how to draw these diagrams. The examples he used were often related to smoking and lung cancer, where we have a very strong existing understanding of the causal mechanisms. But the diagrams seem much less helpful when you are not certain about which edges exist (and in which direction), or even what variables should be represented. The answer might delve too deep into epistemology (how do we “know” an empirical relationship exists), but it seems like a central question to the utility of these diagrams. The data analyst might rely on experts for the diagram, but I think many of the issues in causal inference come not from the ability to explain the causal assumptions but rather in justifying those assumptions.&lt;/p&gt;
 &lt;p&gt;Of course if an expert hands you a list of relationships that are accepted conventional wisdom in the field, a data analyst could do the causal analysis. But that never really happens outside of a few contrived subject areas. Particularly in social sciences, almost no relationships are accepted as true. Social structures even change over time, so the fact that some correlation held in the past is not always a good justification for using it in a causal diagram about current trends. To me, its always seemed easiest to make causal inferences when you have a strong understanding of the subject area. Going from a list of beliefs to a directed graph might help formalizing the mathematical definitions of cause and effect, but it really doesn’t seem like it would help much in practice because the hard part is getting that list and quantifying uncertainty about the list.&lt;/p&gt;
-&lt;p&gt;An area where I do understand how the diagrams are useful is when Pearle discussed how to teach causation to machines. A list of beliefs is quite hard for a computer to understand, but a directed graph referring to how each variable causes changes in others does sound very machine-interpret-able. The problem of generating the list still seems hard, but the notion of how do you tell a computer that X causes Y and not the reverse was pretty interesting.&lt;/p&gt;
+&lt;p&gt;An area where I do understand how the diagrams are useful is when Pearl discussed how to teach causation to machines. A list of beliefs is quite hard for a computer to understand, but a directed graph referring to how each variable causes changes in others does sound very machine-interpret-able. The problem of generating the list still seems hard, but the notion of how do you tell a computer that X causes Y and not the reverse was pretty interesting.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;john-carreyrous-bad-blood-the-theranos-story&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;John Carreyrou’s &lt;a href=&#34;https://www.amazon.com/Bad-Blood-Secrets-Silicon-Startup-ebook/dp/B078VW3VM7/&#34;&gt;Bad Blood: The Theranos Story&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This was a really fascinating rundown of how a well-regarded start-up collapsed. The short of it is that the promises made by the founder and CEO Elizabeth Holmes about being able to run hundreds of medical tests on a single drop of blood were lies. Employees who raised concerns that the tests were not accurate or that the product just didn’t work were told that they weren’t ``team players,’’ fired, and forced to sign non-disclosure agreements. Through a mixture of deceit (showing “live” demos that were actually recordings of results), strong branding, and an idea that, if it had worked, would genuinely have been revolutionary, she convinced senior executives and officials at a variety of institutions to buy into her company and her personally. When results did not look good or deadlines were not met, the executives made excuses or accepted the delays because they believed in the grand vision of revolutionizing health care.&lt;/p&gt;
-&lt;p&gt;The story is well chronicled in the book and the popular press, so I’ll just highlight one of my takeaways that I haven’t seen discussed elsewhere. A lot of the information John Carreyrou gathered would have been impossible without Theranos hiring some wealthy and well-connected Stanford graduates. The former employees who spoke to Carreyrou had to bear significant legal risk. Theranos had paid David Boise, one of the most feared attorneys in the country, with company shares and his law firm vigorously enforced the NDAs employees had signed. They hired investigators to follow ex-employees who they suspected were talking to journalists. Theranos both threatened to sue and actually sued potential whistle-blowers. One of Carreyrou’s main informants was a Stanford graduate who had wealthy parents and was the grandson of a former Secretary of State. He (his parents) had the financial resources to weather the legal attacks until the story broke, while other whistleblowers (quite rationally) backed out after threats of litigation.&lt;/p&gt;
-&lt;p&gt;Existing whistleblower statutes were certianly not enough to protect the former Theranos employees who had concerns. It should not be only privleged white men who can take the risk of reporting the companies that they work for.&lt;/p&gt;
+&lt;p&gt;The story is well chronicled in the book and the popular press, so I’ll just highlight one of my takeaways that I haven’t seen discussed elsewhere. A lot of the information John Carreyrou gathered would have been impossible without Theranos hiring some wealthy and well-connected Stanford graduates. The former employees who spoke to Carreyrou had to bear significant legal risk. Theranos had paid David Boise, one of the most feared attorneys in the country, with company shares and his law firm vigorously enforced the NDAs employees had signed. They hired investigators to follow ex-employees who they suspected were talking to journalists. Theranos both threatened to sue and actually sued potential whistleblowers. One of Carreyrou’s main informants was a Stanford graduate who had wealthy parents and was the grandson of a former Secretary of State. He (his parents) had the financial resources to weather the legal attacks until the story broke, while other whistleblowers (quite rationally) backed out after threats of litigation.&lt;/p&gt;
+&lt;p&gt;Existing whistleblower statutes were certainly not enough to protect the former Theranos employees who had concerns. It should not be only privileged white men who can take the risk of reporting the companies that they work for.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Data Science in Mental Health</title>
-      <link>/post/2018_09_mental_health/</link>
+      <link>https://g-tierney.github.io/post/2018_09_mental_health/</link>
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018_09_mental_health/</guid>
-      <description>&lt;p&gt;I came across two articles recently that I thought spoke to each other in an interesting way. The first was a New York Times piece about the failings of data science firms who try to identify school shootings before they happen by social media posts. The second was a Vox article about how a crisis counseling hotline successfully used data science to flag callers who are at higher risk of suicide or self-harm.&lt;/p&gt;
+      <guid>https://g-tierney.github.io/post/2018_09_mental_health/</guid>
+      <description>
+
+
+&lt;p&gt;I came across two articles recently that I thought spoke to each other in an interesting way. The first was a New York Times piece about the failings of data science firms who try to identify school shootings before they happen by social media posts. The second was a Vox article about how a crisis counseling hotline successfully used data science to flag callers who are at higher risk of suicide or self-harm.&lt;/p&gt;
 &lt;p&gt;I have some specific thoughts on both, but I think the comparison between the two articles shows why a data-driven approach is helpful in one case and not the other.&lt;/p&gt;
 &lt;div id=&#34;a-failure-predicting-school-shootings&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;A Failure: Predicting School Shootings&lt;/h2&gt;
@@ -71,11 +76,12 @@
     
     <item>
       <title>Record linkage: An Adventure in Graph Theory</title>
-      <link>/post/name_graphs/</link>
+      <link>https://g-tierney.github.io/post/name_graphs/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/name_graphs/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+      <guid>https://g-tierney.github.io/post/name_graphs/</guid>
+      <description>
+&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
@@ -250,7 +256,7 @@ graph_plot &amp;lt;- graph_plot %&amp;gt;% simplify()
 set.seed(0515) #fix the position of nodes on the plot
 ggnet2(graph_plot,label = T,layout.exp=2,color = &amp;quot;lightskyblue2&amp;quot;) + 
   ggtitle(&amp;quot;Sample Name Network&amp;quot;) + theme(plot.title = element_text(hjust = .5,face = &amp;quot;bold&amp;quot;,size = 15))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/name_graphs_files/figure-html/plot_graph-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/name_graphs_files/figure-html/plot_graph-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Now here is the code itself. The full script and example data are available at &lt;a href=&#34;https://github.com/g-tierney/record_linkage_graphs&#34;&gt;this Github repository&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(igraph)
 
@@ -436,11 +442,14 @@ abby.schifferle
     
     <item>
       <title>Article Round Up June 2018: Income Inequality, Partisan Economies, and Trump Tweets to Hate Crimes</title>
-      <link>/post/2018_06_best_reads/</link>
+      <link>https://g-tierney.github.io/post/2018_06_best_reads/</link>
       <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018_06_best_reads/</guid>
-      <description>&lt;p&gt;This is my second article round up. The first is over at &lt;a href=&#34;https://ticktocksaythehandsoftheclock.wordpress.com/2018/04/06/march-2018-universities-fake-news-and-drugs/&#34;&gt;my old blog here&lt;/a&gt;. In this post, I’ll briefly cover two Atlantic articles related to economic inequality and the differing economic expectations of democrats and republicans. Most time is spent reviewing a new working paper on the correlation between Trump’s twitter activity and hate crimes, and thinking about how it could make the jump from correlation to causation.&lt;/p&gt;
+      <guid>https://g-tierney.github.io/post/2018_06_best_reads/</guid>
+      <description>
+
+
+&lt;p&gt;This is my second article round up. The first is over at &lt;a href=&#34;https://ticktocksaythehandsoftheclock.wordpress.com/2018/04/06/march-2018-universities-fake-news-and-drugs/&#34;&gt;my old blog here&lt;/a&gt;. In this post, I’ll briefly cover two Atlantic articles related to economic inequality and the differing economic expectations of democrats and republicans. Most time is spent reviewing a new working paper on the correlation between Trump’s twitter activity and hate crimes, and thinking about how it could make the jump from correlation to causation.&lt;/p&gt;
 &lt;div id=&#34;income-inequality&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Income Inequality&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Matthew Stuart’s &lt;a href=&#34;https://www.theatlantic.com/magazine/archive/2018/06/the-birth-of-a-new-american-aristocracy/559130/&#34;&gt;“The 9.9 Percent Is the New American Aristocracy”&lt;/a&gt; and Jordan Weissman’s reply &lt;a href=&#34;https://slate.com/business/2018/05/forget-the-atlantics-9-9-percent-the-1-percent-are-still-the-problem.html&#34;&gt;“Actually, the 1 Percent Are Still the Problem”&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -463,7 +472,7 @@ abby.schifferle
 This is the main figure:
 &lt;center&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/tweets_hate_crimes.png&#34; /&gt;
+&lt;img src=&#34;https://g-tierney.github.io/img/tweets_hate_crimes.png&#34; /&gt;
 
 &lt;/div&gt;
 Figure 2: Panel (a) shows the weekly number of Donald Trump’s &lt;br/&gt; Islam-related tweets and the number of anti-Muslim hate crimes &lt;br/&gt; in the US after the start of Trump’s presidential campaign.
@@ -487,11 +496,12 @@ Figure 2: Panel (a) shows the weekly number of Donald Trump’s &lt;br/&gt; Isla
     
     <item>
       <title>The Genetics of Magic</title>
-      <link>/post/magic_classification/</link>
+      <link>https://g-tierney.github.io/post/magic_classification/</link>
       <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/magic_classification/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+      <guid>https://g-tierney.github.io/post/magic_classification/</guid>
+      <description>
+&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;

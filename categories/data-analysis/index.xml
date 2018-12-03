@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Thu, 17 May 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://g-tierney.github.io/categories/data-analysis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What About the Emails?</title>
+      <link>https://g-tierney.github.io/post/political_emails/</link>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/political_emails/</guid>
+      <description>The Project One fateful day while I was bored during a lecture, I decided to sign up for email messages from each Senate campaign during the 2018 election cycle. A lot of people study the impact of political advertisements on various outcomes, and I thought some interesting trends might emerge in the email blasts that campaigns send out.
+ The Data I signed up using a new email address, and only filled out the required fields to get on mailing lists.</description>
+    </item>
     
     <item>
       <title>The Genetics of Magic</title>

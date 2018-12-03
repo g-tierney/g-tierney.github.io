@@ -11,6 +11,1292 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>What About the Emails?</title>
+      <link>https://g-tierney.github.io/post/political_emails/</link>
+      <pubDate>Mon, 03 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/political_emails/</guid>
+      <description>
+&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;the-project&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Project&lt;/h1&gt;
+&lt;p&gt;One fateful day while I was bored during a lecture, I decided to sign up for email messages from each Senate campaign during the 2018 election cycle. A lot of people study the impact of political advertisements on various outcomes, and I thought some interesting trends might emerge in the email blasts that campaigns send out.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Data&lt;/h1&gt;
+&lt;p&gt;I signed up using a new email address, and only filled out the required fields to get on mailing lists. I used my real name, the zip code 00000, and a phone number of all zeros. The data for what information I gave to each campaign is on Github. I felt kind of bad signing up for volunteer lists with false information, which were the only email option for some campaigns. The data turned out to be pretty interesting though, so I think next cycle for the presidential election I will try to get on a more comprehensive set of emails by signing up for the House races too and providing zip codes and phone numbers in the relevant district.&lt;/p&gt;
+&lt;p&gt;I found the candidates and campaign websites from &lt;a href=&#34;https://www.realclearpolitics.com/epolls/2018/senate/2018_elections_senate_map.html&#34;&gt;RealClearPolitics’s Senate map&lt;/a&gt;. I started signing up for emails on 6/6/2018, but didn’t sign up for every senate race until 10/9/2018. In the last month before the election (October 6 through November 6 inclusive) I received 2,650 emails from 50 unique campaigns. Some campaigns did not have an option to signup for an email list on their website and some may have filtered out my email address because the zip code and/or phone number were clearly not accurate. Much of the analysis below compares emails from Democrats and Republicans, so I further filter the emails down to races where I received at least one email from both party’s candidates. The final number is 2,397 emails and 44 campaigns. Most analysis uses this sample, and I will specify when that is not the case.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;who-is-sending-emails-and-when&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Who is sending emails and when?&lt;/h1&gt;
+&lt;p&gt;I received emails from both parties in the following states: AZ, FL, IN, MA, MD, MI, MN, MO, MS, ND, NE, NJ, NV, NY, OH, PA, TN, TX, USA, UT, VA, VT, WA, WY. A notable omission is West Virginia, where I only received emails from Joe Manchin. Below I show the number of emails I received each day from each party.&lt;/p&gt;
+&lt;div class=&#34;figure&#34; style=&#34;text-align: center&#34;&gt;
+&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/who_emails-1.png&#34; alt=&#34;Emails sent within the month before the election and for states where I recieved emails from both party&#39;s candidates.&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+(#fig:who_emails)Emails sent within the month before the election and for states where I recieved emails from both party’s candidates.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;What immediately jumped out to me was that the democratic candidates send significantly more emails (and for some reason campaigns send the fewest emails on Wednesdays). Next, I tally the number of emails I received from each candidate, and show the races where I received at least 100 emails in total.&lt;/p&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+State
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Party
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Campaign
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Total Emails
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NV
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Jacky Rosen
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+352
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NV
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Dean Heller
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+147
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+FL
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Bill Nelson
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+237
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+FL
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Rick Scott
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+MO
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Claire McCaskill
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+185
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+MO
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Josh Hawley
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+30
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ND
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Heidi Heitkamp
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+176
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ND
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Kevin Cramer
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+29
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+AZ
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Kyrsten Sinema
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+96
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+AZ
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Martha McSally
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+69
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+IN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Joe Donnelly
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+106
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+IN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Mike Braun
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+50
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+USA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+DNC
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+59
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+USA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+RNC
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+73
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+MN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Amy Klobuchar
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+19
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+MN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+D
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Tina Smith
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+62
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+MN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+R
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Karin Housely
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+38
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Jacky Rosen, Bill Nelson, Claire McCaskill, Heidi Heitkamp, and Joe Donnely (all democrats) sent over 100 emails during the relevant time-frame. Dean Heller was the only republican who sent me over 100 emails. In general, Democrats sent more emails than their Republican opponents. However, I certainly would not be surprised if my sample was biased. People who signed up with in-state addresses probably received more emails than I did. I don’t know how sophisticated campaigns are with targeting their emails, but I would be shocked if they did not focus efforts like Get Out the Vote campaigns on people with addresses in their district. I do wonder, though, if there is a connection between the fundraising strategies and email strategies of each party. If Democrats rely more on smaller donations from many individuals, they might need to send more emails to everyone who expresses interest in their campaign. Republicans who either self-fund or court fewer donations from wealthier individuals might simply not have much to gain from emailing out-of-state individuals.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;email-content&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Email Content&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/word_clouds-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Next, I will analyze the content of the emails. The word clouds above show each word sized proportionally to the amount of times it was used in the email. Both party’s emails frequently used words like senate, vote, and fight, but some differences are already apparent. Here I do unfortunately need to filter the dataset down more. Many of the emails that were sent came in a format that did not download or parse into human-readable text well. I tried to extract the text from all emails, but some (particularly ones with odd formatting or with pictures of text) I could not parse properly. The number of emails analyzed in this section is only 2,043.&lt;/p&gt;
+&lt;p&gt;Word clouds are a useful visualization, but I will use a statistical technique, the relative risk ratio, to characterize the difference in word-usage between Republican and Democratic emails.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/word_counts-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The chart above merits some further explanation. For each word, I calculated the proportion of Democratic emails that used the word and the proportion of Republican emails that used the word. Then, I took the ratio of those two quantities, often referred to as the relative risk ratio. To put everything on a comparable scale, if Republican emails used the word more frequently, I multiplied the proportion by -1 and took the inverse. So if the ratio is equal to R and positive, then Democratic emails used the word R times more frequently. If the ratio is equal to R and negative, then Republican emails used the word R times more frequently. I show the 15 words with the largest ratio for each party.&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Something that I noticed quickly is that race-specific terms from races where the Democrat sent many more emails than the Republican have high risk ratios: “Las Vegas”, “Scott” (Bill Nelson referring to his opponent Rick Scott), and “FL” are all in the top 15 for democrats. “ActBlue” is an organization that helps Democrats fundraise. “politicalemaild” is a truncated version of the email address I provided to campaigns.&lt;/p&gt;
+&lt;p&gt;I was not surprised that the words “borders” and “conservative” are in the top for Republicans, but I was quite surprised by “web” and “website” along with “wife” and “grandmother” showing up in the top 15. “Liberal” is used frequently as a pejorative by Republicans, but apparently Democrats do not use the word anywhere near as frequently when messaging their own supporters.&lt;/p&gt;
+&lt;p&gt;Of course, words that are used by one party and never used by the other will have a risk ratio of plus or minus infinity. The problem with looking at all of those words is that they often are spelling or parsing errors that happen once or twice for one party and never for the other. To account for that, I show only the 10 most frequently used words that are never used by the opposing party.&lt;/p&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;border-bottom:hidden&#34; colspan=&#34;1&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; &#34; colspan=&#34;2&#34;&gt;
+&lt;div style=&#34;border-bottom: 1px solid #ddd; padding-bottom: 5px;&#34;&gt;
+Democratic
+&lt;/div&gt;
+&lt;/th&gt;
+&lt;th style=&#34;border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; &#34; colspan=&#34;2&#34;&gt;
+&lt;div style=&#34;border-bottom: 1px solid #ddd; padding-bottom: 5px;&#34;&gt;
+Republican
+&lt;/div&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Emails Using Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Proportion Using Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Emails Using Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Proportion Using Word
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+youd
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+625
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.287
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mitch
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+307
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.141
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mcconnell
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+299
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.138
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+environment
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+262
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.121
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+fivethirtyeight
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+224
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.103
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+silvers
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+217
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.100
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+nelson
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+212
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.098
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+melbourne
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+210
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.097
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+whitmire
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+210
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.097
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+floridas
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+198
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.091
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+inherit
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+74
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.079
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+nrcc
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+66
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.071
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+chuck
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+62
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.067
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+complaints
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+60
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.064
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+devoted
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+60
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.064
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+conservatives
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+57
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.061
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+suggestions
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+57
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.061
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+replying
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+56
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.060
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+schumer
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+54
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.058
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+charitable
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+53
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.057
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Again, “Florida’s” and “Nelson” show up as top democratic words never used by republicans because I received many emails from Bill Nelson’s campaign and almost none from Rick Scott’s. I was surprised that no republican emails used the word “you’d”, but it might follow from the fact that Democrats used my full email address more than republicans. Democrats referenced “Silver’s” “FiveThirtyEight” website in over 200 emails, while Republicans never mentioned either him or the website.&lt;/p&gt;
+&lt;p&gt;Besides the words that are used most differently, I was also curious how some specific words showed up in emails. Below I tabulate the usage of a few select words. Specifically, I was interested in which politicians get mentioned by each party, some campaign issues, and party signifiers.&lt;/p&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;border-bottom:hidden&#34; colspan=&#34;1&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; &#34; colspan=&#34;2&#34;&gt;
+&lt;div style=&#34;border-bottom: 1px solid #ddd; padding-bottom: 5px;&#34;&gt;
+Democratic
+&lt;/div&gt;
+&lt;/th&gt;
+&lt;th style=&#34;border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; &#34; colspan=&#34;2&#34;&gt;
+&lt;div style=&#34;border-bottom: 1px solid #ddd; padding-bottom: 5px;&#34;&gt;
+Republican
+&lt;/div&gt;
+&lt;/th&gt;
+&lt;th style=&#34;border-bottom:hidden&#34; colspan=&#34;1&#34;&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Emails Using Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Proportion Using Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Emails Using Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Proportion Using Word
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Signed Risk Ratio
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+trump
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+365
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.168
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+183
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.196
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.170
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+obama
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+27
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.012
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+27
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.029
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-2.333
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+pelosi
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.041
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mcconnell
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+299
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.138
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+caravan
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.005
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+NA
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+kavanaugh
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+54
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.025
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+60
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.064
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-2.592
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+radical
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.002
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+68
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.073
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-39.655
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+conservative
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.001
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+136
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.146
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-105.745
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+liberal
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.000
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+112
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.120
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-261.253
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+progressive
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+25
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.011
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.015
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+-1.306
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;While Trump and Obama were mentioned in about 30% of emails by both Democrats and Republicans, congressional leaders were almost exclusively mentioned by the opposing party. Democrats mentioned Mitch McConnell in about 16.5% of their emails, while he was never mentioned by Republicans. Republicans mentioned Nancy Pelosi in about 9% of their emails, while she was mentioned in only 0.5% of democratic emails. This seems to lend truth to the impression I got from news coverage that Republicans ran against Pelosi and Democrats ran against McConnell.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;email-sentiment&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Email Sentiment&lt;/h1&gt;
+&lt;p&gt;How did the sentiment of emails differ by party? Here I will rely on some of the built-in dictionaries in the &lt;code&gt;tidytext&lt;/code&gt; package in R. Sentiment analysis generally refers to matching each word with some sentiment, either on a positive or negative scale or to some (short) list of topics. A review of the dictionaries that I will be using is &lt;a href=&#34;https://www.tidytextmining.com/sentiment.html#the-sentiments-dataset&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The simplest way to find the sentiment of a document is to use a dictionary that maps words to whether they express a positive or negative sentiment, give each positive word a weight of +1 and each negative word a weight of -1, then find the average for each document. The chart below does just that. Note that the bounds are at plus or minus 1 because I only take the average over words with a sentiment attached to them.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/pos_neg_sentiments-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;I plotted a density histogram because I received many more democratic than republican emails. The total area of the bars is scaled to sum to one for each party. The results look pretty interesting. For both parties, the distribution of sentiment is concentrated at 0.5, which corresponds to emails that use 75% positive words and 25% negative words. Democratic emails are more concentrated at this value, and the sentiment of Republican emails is more spread out with additional concentrations at plus or minus 1 (all positive or all negative words).&lt;/p&gt;
+&lt;p&gt;Next I try a slightly more complicated sentiment analysis. I use a dictionary that maps words to (potentially multiple) of the following sentiments: trust, fear, negative, sadness, anger, surprise, positive, disgust, joy, and anticipation. Then, I calculate the proportion of words with the given sentiment among words that had any sentiment for each email and plot a histogram of the results. There are a lot of charts below, but I think they all tell the same story. The overall sentiment of the words used by each party are extremely similar. If all you knew about a campaign email was the sentiment score reported below, it would be extremely hard to correctly guess the party of the candidate.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/categorical_sentiment-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/categorical_sentiment-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/categorical_sentiment-3.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/categorical_sentiment-4.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;img src=&#34;https://g-tierney.github.io/post/political_emails_files/figure-html/categorical_sentiment-5.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;classification&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Classification&lt;/h1&gt;
+&lt;p&gt;Overall, it looks like certain words can give away the political alignment of the email, but the sentiment cannot. However, that conclusion just comes from examining the histograms. A more sophisticated method to measure how well sentiment can identify political text is to fit a prediction model, then test how well it works on a held-out set. If the information about sentiment improves predictive power, then there is evidence that the parties speak to their supporters differently. A recent working paper by Gentzcow, Shapiro, and Taddy measure political polarization by how accurately speeches on the floor of Congress can identify the partisan alignment of the speaker.&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; The classification accuracy results here can be interpreted similarly. I will use the two most straightforward techniques that I know of for this task: logistic regression and leave-one-out cross validation (LOOCV).&lt;/p&gt;
+&lt;p&gt;Logistic regression is a standard method to fit a model to a binary outcome. What I want to do is estimate the probability that an email is from a Democrat as a function of the sentiment scores. A linear relationship will not work because probabilities need to be between zero and one. Logistic regression assumes that the log of the odds of an event (the probability of an email being Democratic divided by the probability of the email being Republican) is a linear function of the explanatory variables. Because of this change in perspective, interpreting the coefficients of a logistic regression is a little bit harder.&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; It is still the case, however, that positive coefficients mean an increase in the explanatory variable is associated with an increase in the probability that the dependent variable equals one, so the interpretation of the &lt;em&gt;sign&lt;/em&gt; of the coefficient remains the same.&lt;/p&gt;
+&lt;p&gt;Leave-one-out cross-validation is an evaluation method where a model is fit on all data points except one, then the model is asked to predict the value at the held-out data point, and finally the prediction and observed value are compared. In my application, I code the event that an email comes from a democratic campaign as a one and the event that an email comes from a republican campaign as a zero. If the model predicts that an email is from a Democratic campaign with probability greater than 0.5, I classify it as a Democratic email and as a Republican email otherwise. The LOOCV error rate is the number of miss-classified emails divided by the number of emails.&lt;/p&gt;
+&lt;p&gt;The explanatory variables I use are all the variables charted above (the average of positive and negative sentiment, called “Email Sentiment”, and each of the categorical sentiments) and the number of sentiment words in each email. To see if results were being driven by a single sentiment, I fit a univariate model with each term individually and a full model with all of the variables included. The results of the univaraite regressions are shown below.&lt;/p&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Model
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Coefficient
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Intercept
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+LOOCV Error Rate
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Email Sentiment
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.084**&lt;br&gt;(0.03)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.663***&lt;br&gt;(0.016)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.4%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Trust
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-0.735***&lt;br&gt;(0.086)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1.018***&lt;br&gt;(0.039)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+28.4%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Fear
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-0.454***&lt;br&gt;(0.126)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.746***&lt;br&gt;(0.017)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.3%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Negative
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.391***&lt;br&gt;(0.097)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.596***&lt;br&gt;(0.027)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.4%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sadness
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.989***&lt;br&gt;(0.142)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.569***&lt;br&gt;(0.021)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.4%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anger
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.023&lt;br&gt;(0.128)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.693***&lt;br&gt;(0.019)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.4%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Surprise
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.228&lt;br&gt;(0.145)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.67***&lt;br&gt;(0.019)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.4%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Positive
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-1.26***&lt;br&gt;(0.073)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1.263***&lt;br&gt;(0.034)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+27.7%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Disgust
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-0.611**&lt;br&gt;(0.187)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.73***&lt;br&gt;(0.015)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.2%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Joy
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-1.692***&lt;br&gt;(0.109)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.926***&lt;br&gt;(0.018)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+27.1%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anticipation
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-0.883***&lt;br&gt;(0.107)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.871***&lt;br&gt;(0.024)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.1%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Number of Sentiment Words
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0&lt;br&gt;(0.001)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.692***&lt;br&gt;(0.024)
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+30.4%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; border: 0;&#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; border: 0;&#34; colspan=&#34;100%&#34;&gt;
+&lt;sup&gt;&lt;/sup&gt; * p&amp;lt;0.05; ** p&amp;lt;0.01; *** p&amp;lt;0.001
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;While the error rates appear low, they actually are not much better than random chance. Of the 1,880 emails with sentiment data, 69.6% of them are from democratic campaigns. So if you just guessed that every email was Democratic, you would be wrong 30.4% of the time. An equivalent interpretation is that if you randomly classified 69.6% of the emails as Democratic and the rest as Republican, you would expect to have an error rate of 30.4%. Even for some of the sentiments with statistically significant coefficients, their prediction accuracy is no better than random chance. The full model, however, does have some predictive power. The results are shown below.&lt;/p&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Variable
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Coefficient
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Email Sentiment
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.99***&lt;br&gt;(0.2)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Trust
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-6.511***&lt;br&gt;(0.704)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Fear
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-8.376***&lt;br&gt;(1.04)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Negative
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-2.256*&lt;br&gt;(0.945)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sadness
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+6.867***&lt;br&gt;(1.148)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anger
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+3.013**&lt;br&gt;(1.117)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Surprise
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+1.201&lt;br&gt;(1.106)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Positive
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-7.824***&lt;br&gt;(0.68)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Disgust
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-7.099***&lt;br&gt;(1.263)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Joy
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-3.985***&lt;br&gt;(1.089)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anticipation
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-1.123&lt;br&gt;(0.773)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Number of Sentiment Words
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+-0.002&lt;br&gt;(0.004)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Intercept
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+8.438***&lt;br&gt;(0.646)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; border: 0;&#34; colspan=&#34;100%&#34;&gt;
+&lt;span style=&#34;font-style: italic;&#34;&gt;Note: &lt;/span&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding: 0; border: 0;&#34; colspan=&#34;100%&#34;&gt;
+&lt;sup&gt;&lt;/sup&gt; * p&amp;lt;0.05; ** p&amp;lt;0.01; *** p&amp;lt;0.001. LOOCV Error Rate: 21.6%
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;p&gt;The error rate for the full model is 21.6%, an improvement over random chance by a factor of about 2/3. By using all of the sentiments together, emails can be classified better than by simply guessing that every email is democratic.&lt;/p&gt;
+&lt;p&gt;Emails with higher positive average sentiment, or more sadness and anger words are more likely to be democratic emails. Emails with more trust, fear, negative, positive, disgust, or joy words are more likely to be from republican candidates. Democrats might tend to describe the previous Congress with words that convey anger or sadness, while Republicans would use positive, joy, or trust words. The fact that Republican emails also use more disgust and fear words is evidence against that explanation though, or at least is evidence that the truth is more complicated.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;further-work&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Further Work&lt;/h1&gt;
+&lt;p&gt;The classification and cross-validation methods that I used are certainly simpler versions of where the state of the art is. I would not be surprised if more information could be extracted from the text or the sentiments with more sophisticated tools. Something that I haven’t explored, but could be quite interesting, is using the text itself rather than the sentiment to classify emails. The difficulty is that text data is very high dimensional: there were far more unique words used than emails sent, so you could get a perfect in-sample prediction if the explanatory variables are just indicators for the presence or absence of each word. There are also some words that are very predictive, but not predictive in an “interesting” way. Emails always mention the candidate’s name, frequently include a link to the campaign’s donation page or list their mailing address. Clearly, you can immediately know party of the sender from those features. But those predictions are also not very interesting. What I would like to do is extract from the emails some measures of the general language each party uses and then use those features to classify the email. If those features classify accurately, then there is evidence for divergence in how the parties speak to their supporters. That result has implications for trying to convince people to change their political beliefs. Presenting convincing arguments to partisans of each party probably requires speaking their language in some sense, and campaign emails are potentially a useful data source for learning that language.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;I also removed all non-alphanumeric characters from each word.&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;The full article can be found &lt;a href=&#34;https://www.nber.org/papers/w22423.pdf&#34;&gt;here&lt;/a&gt;.&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Technically, a one unit increase in the explanatory variable increases the odds that an event occurs by &lt;span class=&#34;math inline&#34;&gt;\(e^\beta\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\beta\)&lt;/span&gt; is the estimated logit coefficient.&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Reviews: The Book of Why and Bad Blood</title>
       <link>https://g-tierney.github.io/post/2018_10_books/</link>
       <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>

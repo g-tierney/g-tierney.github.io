@@ -146,5 +146,26 @@
     ],
     "title": "The Genetics of Magic",
     "type": "post"
+  },
+  {
+    "authors": null,
+    "categories": null,
+    "content": "",
+    "date": 1461729600,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1461729600,
+    "objectID": "5de5e556cd553dcad22633be528fdf8b",
+    "permalink": "https://g-tierney.github.io/teaching/political_text/",
+    "publishdate": "2016-04-27T00:00:00-04:00",
+    "relpermalink": "/teaching/political_text/",
+    "section": "teaching",
+    "summary": "Myself and [another Ph.D. student](https://beckytang.rbind.io/) created a module to teach undergraduates statistical methods for text analysis focused on political applications. We created and taught variants for implementation in introductory and advanced classes. This work was funded by the Duke Rhodes Information Initiative and is documented here: https://bigdata.duke.edu/projects/text-analysis-political-speech.",
+    "tags": [
+      "demo"
+    ],
+    "title": "Political Text Analysis",
+    "type": "teaching"
   }
 ]

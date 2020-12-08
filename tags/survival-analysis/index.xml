@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Survival Analysis on Graham Tierney</title>
+    <link>https://g-tierney.github.io/tags/survival-analysis/</link>
+    <description>Recent content in Survival Analysis on Graham Tierney</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://g-tierney.github.io/tags/survival-analysis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Why you shouldn’t “hold-out” data in survival-model predictions</title>
+      <link>https://g-tierney.github.io/post/survival_hold_out_writeup/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/survival_hold_out_writeup/</guid>
+      <description>In nearly all cases, the proper way to make predictions on a subset of your data is by holding-out the data you want to predict, training a model on the remaining data, then predicting the outcome on the held-out data using the trained model. The reason is that this procedure ostensibly captures how you would use this model in practice: train the model on all the data you have, then predict for new data where the outcome is unknown.</description>
+    </item>
+    
+  </channel>
+</rss>

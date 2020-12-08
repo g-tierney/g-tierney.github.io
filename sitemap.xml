@@ -93,7 +93,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/categories/article-review/</loc>
-      <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -111,7 +111,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/categories/</loc>
-      <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -120,7 +120,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/tags/causal-inference/</loc>
-      <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+      <lastmod>2018-11-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -138,16 +138,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/categories/data-analysis/</loc>
-      <lastmod>2018-12-07T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://g-tierney.github.io/tags/data-science/</loc>
-      <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+      <lastmod>2020-12-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -156,6 +147,15 @@
     <url>
     
       <loc>https://g-tierney.github.io/categories/data-science/</loc>
+      <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/data-science/</loc>
       <lastmod>2018-09-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -264,6 +264,15 @@
     
       <loc>https://g-tierney.github.io/tags/social-media/</loc>
       <lastmod>2018-06-07T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/tags/survival-analysis/</loc>
+      <lastmod>2020-12-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

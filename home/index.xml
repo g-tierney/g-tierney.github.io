@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0500</lastBuildDate>
     
 	<atom:link href="https://g-tierney.github.io/home/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Academic</title>
       <link>https://g-tierney.github.io/home/hero/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 -0400</pubDate>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/hero/</guid>
       <description>The highly flexible website framework for Hugo with an extensible plugin mechanism. Create a beautifully simple site in under 10 minutes 🚀 Latest release  
@@ -25,7 +25,7 @@
     <item>
       <title></title>
       <link>https://g-tierney.github.io/home/about/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/about/</guid>
       <description>Biography I am a Ph.D. student in the Department of Statistical Science at Duke University starting in September 2018. My research interests are still developing, but broadly include applications of statistics to questions in social science, particularly those involving public policy and politics.
@@ -35,7 +35,7 @@ After graduating from Carleton College with a B.A. in Economics and Statistics, 
     <item>
       <title>Selected Publications</title>
       <link>https://g-tierney.github.io/home/publications_selected/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/publications_selected/</guid>
       <description></description>
@@ -44,7 +44,7 @@ After graduating from Carleton College with a B.A. in Economics and Statistics, 
     <item>
       <title>Publications</title>
       <link>https://g-tierney.github.io/home/publications/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/publications/</guid>
       <description>Coming soon!</description>
@@ -53,7 +53,7 @@ After graduating from Carleton College with a B.A. in Economics and Statistics, 
     <item>
       <title>Recent &amp; Upcoming Talks</title>
       <link>https://g-tierney.github.io/home/talks/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/talks/</guid>
       <description></description>
@@ -62,7 +62,7 @@ After graduating from Carleton College with a B.A. in Economics and Statistics, 
     <item>
       <title>Teaching</title>
       <link>https://g-tierney.github.io/home/teaching/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/teaching/</guid>
       <description></description>
@@ -71,7 +71,7 @@ After graduating from Carleton College with a B.A. in Economics and Statistics, 
     <item>
       <title>Blog Posts</title>
       <link>https://g-tierney.github.io/home/posts/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/posts/</guid>
       <description>I will eventually move my old Wordpress site to this one, but for now you can find all of my old posts here.</description>
@@ -80,7 +80,7 @@ After graduating from Carleton College with a B.A. in Economics and Statistics, 
     <item>
       <title>Tags</title>
       <link>https://g-tierney.github.io/home/tags/</link>
-      <pubDate>Wed, 20 Sep 2017 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/tags/</guid>
       <description></description>
@@ -89,7 +89,7 @@ After graduating from Carleton College with a B.A. in Economics and Statistics, 
     <item>
       <title>Contact</title>
       <link>https://g-tierney.github.io/home/contact/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/home/contact/</guid>
       <description></description>

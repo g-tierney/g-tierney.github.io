@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0600</lastBuildDate>
     
 	<atom:link href="https://g-tierney.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Content tagged as &#39;Academic&#39;</title>
       <link>https://g-tierney.github.io/tags/academic/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 -0500</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 -0600</pubDate>
       
       <guid>https://g-tierney.github.io/tags/academic/</guid>
       <description>Here is a list of all the content that has been tagged as academic.</description>
@@ -33,7 +33,7 @@
     <item>
       <title>Causal Inference</title>
       <link>https://g-tierney.github.io/tags/causal-inference/</link>
-      <pubDate>Thu, 01 Nov 2018 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://g-tierney.github.io/tags/causal-inference/</guid>
       <description></description>
@@ -141,7 +141,7 @@
     <item>
       <title>demo</title>
       <link>https://g-tierney.github.io/tags/demo/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0400</pubDate>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0500</pubDate>
       
       <guid>https://g-tierney.github.io/tags/demo/</guid>
       <description></description>

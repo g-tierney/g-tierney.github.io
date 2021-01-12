@@ -7,8 +7,542 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0400</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Is the NFL&#39;s Home-Field Advantage Over?</title>
+      <link>https://g-tierney.github.io/post/home_field/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/home_field/</guid>
+      <description>
+&lt;link href=&#34;https://g-tierney.github.io/rmarkdown-libs/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Home-field advantage (HFA) has been documented in many sports, and much speculation has covered the potential causal mechanisms (referee bias, travel times, crowd reactions, etc.). In the NFL, historically, playing at home has offered about a three point advantage in the point differential, the equivalent of a field goal. However, with COVID-19 imposed restrictions, many home games were conducted without fans, and the home team&#39;s advantage nearly disappeared. Home teams won 127 of 253 games (50.2%),&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; scoring on average only 0.01 more points than their opponents as opposed to the typical 3.00.&lt;/p&gt;
+&lt;p&gt;I began this project to see if I could plausibly measure the home-field advantage season-by-season to see just how unusual 2020 was. Indeed, the raw statistics are historic lows for the NFL. 2020 saw the third lowest home point differential (total points scored by home teams minus total points scored by away teams) and the 4th lowest home win percentage since 1966. When examining past seasons, another year jumps out. Just last year in the 2019 season, home teams were outscored by away teams for the first time since 1968. The plots below show the win rates and point differentials for the past 21 regular seasons with games at neutral fields, e.g. international games, removed.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/home_field_files/figure-html/eda-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The above are essentially just averages without controlling for team strength. Maybe 2020 and 2019 had unusual schedules that consistently placed lopsided match-ups with the favorite at home. Maybe teams with big home-field advantages and played strong opponents in 2020 and 2019. The rest of this post will investigate whether these two concerns to determine whether the results change when accounting for team strength and heterogeneity in home-field advantage across teams.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;adjusting-for-team-strength&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Adjusting for team strength&lt;/h2&gt;
+&lt;p&gt;In this section, I will specify a model for measuring home-field advantage while accounting for team strength and analyze home-field advantage over time, both in terms of points and win probability. I will focus primarily on the home team point differential, home team points minus away team points, for each game. This outcome captures what most people care about, the winner and loser, and contains more information than just modeling wins and losses directly. A team that consistently wins by 14 points is probably better than a team that wins by only 7. Using points also avoids having to deal with ties or 16-0 and 0-16 seasons, which pose some technical difficulties that I will explain later.&lt;/p&gt;
+&lt;p&gt;The model that I will use for point differential is &lt;span class=&#34;math inline&#34;&gt;\(Y_{hag} = \alpha_0 + \mu_h - \mu_a + \epsilon_{hag}\)&lt;/span&gt; with &lt;span class=&#34;math inline&#34;&gt;\(\epsilon_{hag} \sim N(0,\sigma^2)\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Y_{hag}\)&lt;/span&gt; is the score of home team &lt;span class=&#34;math inline&#34;&gt;\(h\)&lt;/span&gt; minus the score of away team &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; in game &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt;. &lt;span class=&#34;math inline&#34;&gt;\(Y_{hag}\)&lt;/span&gt; is &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0 + \mu_h - \mu_a\)&lt;/span&gt; plus some noise, where &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\)&lt;/span&gt; captures the home team&#39;s scoring advantage, &lt;span class=&#34;math inline&#34;&gt;\(\mu_h\)&lt;/span&gt; measures the home team&#39;s strength and &lt;span class=&#34;math inline&#34;&gt;\(\mu_a\)&lt;/span&gt; the away team&#39;s strength. The model has some nice interpretations of the parameters. &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\)&lt;/span&gt; is the expected point differential when two equally skilled teams play. &lt;span class=&#34;math inline&#34;&gt;\(\mu_h - \mu_a\)&lt;/span&gt; is the expected number of points &lt;span class=&#34;math inline&#34;&gt;\(h\)&lt;/span&gt; will win or lose by when playing &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; on a neutral field. Note that this interpretation is only for the difference in team strength. Each game outcome only provides insight on the &lt;em&gt;relative&lt;/em&gt; strength of the teams, so the values of &lt;span class=&#34;math inline&#34;&gt;\(\mu_h\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mu_a\)&lt;/span&gt; are not identified, only the differences.&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; One could, of course, model home points and away points, with separate offensive and defensive HFAs. However, modeling positive, bivariate outcomes gets much more complicated and the primary question of measuring total home-field advantage would ultimately result in estimating a quantity very similar to &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;I will also look at simple wins and losses rather than scores to measure home-field advantage. In this case, let the outcome &lt;span class=&#34;math inline&#34;&gt;\(W_{hag}\)&lt;/span&gt; be a binary variable, 1 for if the home team wins and 0 otherwise. Let &lt;span class=&#34;math inline&#34;&gt;\(p_{hag} = P(W_{hag} = 1)\)&lt;/span&gt;, the probability of a home team win. The model is &lt;span class=&#34;math inline&#34;&gt;\(logit(p) = log\left(\frac{p}{1-p}\right) = \alpha_0 + \mu_h - \mu_a\)&lt;/span&gt;, where &lt;span class=&#34;math inline&#34;&gt;\(logit(p)\)&lt;/span&gt; refers to the log-odds of the home team winning. The same sort of interpretation applies, just with some slight transformations to account for the fact that the parameters can be any real number while &lt;span class=&#34;math inline&#34;&gt;\(p_{hag}\)&lt;/span&gt; needs to be between 0 and 1. &lt;span class=&#34;math inline&#34;&gt;\(e^{\alpha_0}\)&lt;/span&gt; is the odds of the home team winning given equal skill. &lt;span class=&#34;math inline&#34;&gt;\(e^{\mu_h - \mu_a}\)&lt;/span&gt; is the odds that team &lt;span class=&#34;math inline&#34;&gt;\(h\)&lt;/span&gt; beats team &lt;span class=&#34;math inline&#34;&gt;\(a\)&lt;/span&gt; on a neutral field. Note the same identification problem arises in the scale of &lt;span class=&#34;math inline&#34;&gt;\(\mu_i\)&lt;/span&gt;.&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Both models might not look it, but they are actually linear models (or generalized linear for win probabilities) that can be estimated with standard regression packages, just with a clever design matrix. To address the identifiability issues, I enforce a constraint that &lt;span class=&#34;math inline&#34;&gt;\(\sum_i \mu_i = 0\)&lt;/span&gt;. Both models, points and wins, are essentially extensions of the Bradley-Terry model for paired comparisons. See the next section (Implementation Details) for said implementation details. Data, along with team logos and colors used later, were collected from the &lt;code&gt;nflfastR&lt;/code&gt; package by Sebastian Carl and Ben Baldwin.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/home_field_files/figure-html/plot_results-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The left panel shows the estimated expected points advantage for the home teams in each season given an opponent of equal strength. The error bars show the 95% confidence intervals. For all but two seasons prior to 2019, we can reject the null that the home-field points advantage is 0. 2019 and 2020 have estimated home-field advantages of -0.075 and 0.114 respectively. Failing to reject the null is of course different from concluding the null is true, but it would be quite challenging to get point estimates closer to zero than what we observe.&lt;/p&gt;
+&lt;p&gt;In terms of home win probabilities, the results are similar. When two equally skilled teams play, prior to 2019, the home team has an about 60% chance to win. In 2019 and 2020, the confidence intervals exclude 60% for the first time and the home team only had about a 52% and 51% chance of winning, both statistically indistinguishable from a 50-50 chance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;implementation-details&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Implementation Details&lt;/h2&gt;
+&lt;p&gt;If you just want to know which teams have the biggest home-field advantages, go ahead and skip to the next section. I assume if you are still here that you have familiarity with multivariate regression and using statistical packages to implement them. I found estimating the previous section&#39;s model non-trivial, interesting, and a useful learning experience for dealing with complicated contrasts in OLS and GLM scenarios, so I thought it could help others to document it here.&lt;/p&gt;
+&lt;p&gt;Here I will describe how I actually implemented the models, focusing on the points model but both are essentially the same. The statement &lt;span class=&#34;math inline&#34;&gt;\(Y_{hag} \sim N(\alpha_0 + \mu_h - \mu_a,\sigma^2)\)&lt;/span&gt; nicely expresses the model, but it does not look like a standard linear model of the form &lt;span class=&#34;math inline&#34;&gt;\(Y = \beta_0 + x_1 \beta_1 + \epsilon\)&lt;/span&gt; that most statistical packages request, mostly because of the minus sign and the fact that teams switch sides, playing both home and away games. To use standard estimation tools, essentially, for each game &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt;, we need to come up with a vector of variables &lt;span class=&#34;math inline&#34;&gt;\(\mathbf{x}_g\)&lt;/span&gt; such that estimated coefficients &lt;span class=&#34;math inline&#34;&gt;\(\mathbf{\beta}\)&lt;/span&gt; simplify to: &lt;span class=&#34;math inline&#34;&gt;\(\mathbf{\beta}^T \mathbf{x}_g = \beta_1 x_{g1} + \beta_2 x_{g2} + \ldots = \alpha_0 + \mu_h - \mu_a\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Getting &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\)&lt;/span&gt; is easy, make &lt;span class=&#34;math inline&#34;&gt;\(x_{g1} = 1\)&lt;/span&gt; for every game and we get the intercept. Most stats packages don&#39;t actually require you to specify the intercept because it is usually not interpretable, but it is our main variable of interest here. Then, for each team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; let &lt;span class=&#34;math inline&#34;&gt;\(z_{gi} = 1\)&lt;/span&gt; if team &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is the home team in game &lt;span class=&#34;math inline&#34;&gt;\(g\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(-1\)&lt;/span&gt; if &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; is the away team, and 0 otherwise. If we stack these &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; variables together, &lt;span class=&#34;math inline&#34;&gt;\(\mu_1 z_{g1} + \mu_2 z_{g2} + \ldots + \mu_{32} z_{g32} = \mu_h - \mu_a\)&lt;/span&gt;. But we aren&#39;t quite done, as you&#39;ll notice I&#39;ve called these variables &lt;span class=&#34;math inline&#34;&gt;\(z\)&lt;/span&gt; and not the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; that we are interested in. If you try to estimate an intercept plus 32 (one for each NFL team) strength variables, &lt;span class=&#34;math inline&#34;&gt;\(z_{32}\)&lt;/span&gt; won&#39;t estimate. That&#39;s because if you add up &lt;span class=&#34;math inline&#34;&gt;\(z_1\)&lt;/span&gt; through &lt;span class=&#34;math inline&#34;&gt;\(z_{31}\)&lt;/span&gt; then multiply by -1, you&#39;ll get &lt;span class=&#34;math inline&#34;&gt;\(z_{32}\)&lt;/span&gt; (proof left as an exercise for the reader). This is essentially the identification problem coming back up. Just dropping one of the team strength variables doesn&#39;t quite work because the intercept becomes the expected point differential of whatever team was dropped playing at home against a team of strength 0. The dropping uses the identification constraint &lt;span class=&#34;math inline&#34;&gt;\(\mu_{32} = 0\)&lt;/span&gt; and treats team 32 as the &amp;quot;baseline&amp;quot; team.&lt;/p&gt;
+&lt;p&gt;The constraint we really want is not for one of the team strength variables to be zero, but rather for them to sum to zero. There is no nice way to tell the software this information because the home and away team information is stored in two different columns of the dataset. So, we have to do it ourselves. In terms of the coefficients, we know &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^{32} \mu_i = 0\)&lt;/span&gt; so we can write &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i=1}^{31} = -\mu_{32}\)&lt;/span&gt;. Thus, we can express the regression equation as:&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
+E[Y_g] &amp;amp;= \alpha_0 + \sum_{i=1}^{31} \mu_i z_{i} + \mu_{32} z_{32} \\
+&amp;amp;= \alpha_0 + \sum_{i=1}^{31} \mu_i z_{i} - \left(\sum_{i=1}^{31} \mu_i\right) z_{32} \\
+&amp;amp;= \alpha_0 + \sum_{i=1}^{31} \mu_i (z_{i} - z_{32}) \\
+\end{align*}\]&lt;/span&gt;
+&lt;p&gt;And here we have the final result! Set the variables &lt;span class=&#34;math inline&#34;&gt;\(x_{1} = 1\)&lt;/span&gt; for the intercept and &lt;span class=&#34;math inline&#34;&gt;\(x_{i+1} = z_i - z_{32}\)&lt;/span&gt; for &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; in 1 to 31 (number of teams &lt;span class=&#34;math inline&#34;&gt;\(-1\)&lt;/span&gt;), and you have the full equation. We&#39;ve used the desired constraint to augment the trinary team indicator variables such that the intercept directly measures our quantity of interest. To get the team strength estimates, &lt;span class=&#34;math inline&#34;&gt;\(\mu_i\)&lt;/span&gt; is the regression coefficient on &lt;span class=&#34;math inline&#34;&gt;\(z_i-z_{32}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\mu_{32}\)&lt;/span&gt; is the opposite of the sum of the other &lt;span class=&#34;math inline&#34;&gt;\(\mu_i\)&lt;/span&gt; terms (ensuring they all sum to zero). Thinking about uncertainty in the estimates of &lt;span class=&#34;math inline&#34;&gt;\(\mu_i\)&lt;/span&gt; terms is hard because they are all related to each other, if one is an overestimate another must be an underestimate. Dealing with those is outside of the scope of this post, but I may return to it later.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;home-field-advantage-by-team&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Home-Field Advantage by Team&lt;/h2&gt;
+&lt;p&gt;Finally, I&#39;ll look at home-field advantage by team. I&#39;ll just do this for the points model because the aforementioned issues with 16-0 and 0-16 seasons get even more common when a home undefeated or win-less season comes up. The extension to the model is simple, I just add a sub script: &lt;span class=&#34;math inline&#34;&gt;\(Y_{hag} \sim N(\alpha_h + \mu_h - \mu_a,\sigma^2)\)&lt;/span&gt;. Now I&#39;ve written &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h\)&lt;/span&gt; not &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\)&lt;/span&gt; to note that the home-field advantage is home team specific. Estimating this parameter is, however, a bit trickier. In the last model, &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\)&lt;/span&gt; was informed directly by all 256 games in a season. Each &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h\)&lt;/span&gt; is informed by only 8. We can use a similar implementation as above to get a best-guess of each parameter (the maximum likelihood estimate), but those estimates will be quite noisy. Consequently, I will put my Bayesian hat back on and use a hierarchical model for the home team advantage terms: &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h \sim N(\alpha_0,\sigma_\alpha^2)\)&lt;/span&gt;. I assume that the &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h\)&lt;/span&gt; terms all are drawn from a common distribution. This shrinks the estimates each season towards the &amp;quot;typical&amp;quot; home-field advantage and gives some slight regularization so we done make too extreme estimates given limited data. The model is implemented in stan, and you can find the code over on my &lt;a href=&#34;https://github.com/g-tierney/NFL_HFA&#34;&gt;GitHub page here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;From the model, I recover posterior beliefs about &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\)&lt;/span&gt;, the home-field advantage of a typical team in each season, and each &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h\)&lt;/span&gt;, the home-field advantage for team &lt;span class=&#34;math inline&#34;&gt;\(h\)&lt;/span&gt; in a season. Another important (and new) variable is &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{\alpha}\)&lt;/span&gt;. This is the standard deviation of home-field advantage across teams in a given season. Standard deviations are easy to interpret uncertainty measures: about 50% of the actual &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h\)&lt;/span&gt; values will be in the interval &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\pm\sigma_\alpha\)&lt;/span&gt; and nearly all of the values will be within &lt;span class=&#34;math inline&#34;&gt;\(\alpha_0\pm 2\sigma_\alpha\)&lt;/span&gt; (about 1 or 2 &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h\)&lt;/span&gt; values will fall outside of that interval each season). The figure below shows those results.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/home_field_files/figure-html/dist_results-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The Typical HFA measures much an average team would be favored at home when playing an equally skilled opponent. These results track with the above results assuming a constant home-field advantage across teams, but for some years the error bars have gotten wider. Certain years, such as 2003 and 2008, had much more variable home-field advantages, which will increase uncertainty in the behavior of an average team. 2008 had most estimates ranging from the home team being favored by about 6 points to being two point underdogs. The next two plots break out the estimates by team. The top panel shows every team and the bottom just the largest and smallest home-field advantages.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://g-tierney.github.io/post/home_field_files/figure-html/team_results-1.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;img src=&#34;https://g-tierney.github.io/post/home_field_files/figure-html/team_results-2.png&#34; width=&#34;672&#34; style=&#34;display: block; margin: auto;&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The top plot shows the wide range of home advantages even within a single year, with lines connecting each team&#39;s estimate. Starting around 2015, that variability drops off and teams all start to look very similar to each other. Most of the time, the worst home-field advantage is about 0. The outlier in 2008 was the Detroit Lions, who were expected to lose by 5 points at home when playing that they would tie on a neutral field. This was of course the season the Lions went 0-16, losing home games by a significantly larger margin than away games. The bottom plot just picks out the best and worst teams. There is significant turnover year-to-year in the NFL and that pattern continues into home-field advantage. The year prior to the Lions&#39; historically bad year, they had the largest home-field advantage. The 9ers, Dolphins, Jaguars, Panthers, and Steelers also had the smallest and largest home-field advantages in different years, although none of them managed it in consecutive years. To try and review all teams, the table below reports the average and standard deviation of &lt;span class=&#34;math inline&#34;&gt;\(\alpha_h\)&lt;/span&gt; across all seasons for each team.&lt;/p&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Team
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+HFA (Mean)
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+HFA (SD)
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/bal.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+BAL
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+3.08
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.57
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/gb.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+GB
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.93
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.71
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/ne.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NE
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.90
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.60
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/sea.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+SEA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.79
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.47
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/pit.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+PIT
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.62
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.50
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/ind.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+IND
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.59
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.19
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/dal.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+DAL
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.59
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.62
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/min.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+MIN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.58
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.59
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/lar.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+LA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.47
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.87
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/sf.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+SF
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.47
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.76
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/no.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NO
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.47
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.19
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/phi.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+PHI
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.49
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/buf.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+BUF
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.38
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.55
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/lac.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+LAC
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.36
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.44
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/den.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+DEN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.34
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.53
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/kc.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+KC
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.32
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.90
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/ten.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+TEN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.30
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.53
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/hou.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+HOU
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.27
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.17
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/chi.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+CHI
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.25
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.25
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/ari.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ARI
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.23
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.64
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/tb.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+TB
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.16
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.50
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/jax.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+JAX
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.26
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500-dark/car.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+CAR
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.12
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.91
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NYJ
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.07
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.25
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/atl.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ATL
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.02
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.39
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/mia.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+MIA
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.02
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.40
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/cin.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+CIN
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.96
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.52
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/det.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+DET
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.92
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2.28
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/lv.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+LV
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.79
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.37
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+NYG
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.75
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.47
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/cle.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+CLE
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.64
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.94
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+&lt;img src=&#34;https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png&#34; width=&#34;30&#34; /&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+WAS
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.59
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1.21
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The Ravens, Packers, Patriots, and Seahawks have the largest average home-field advantages at around 3 to 2.75 point favorites at home. The Lion were only the 5th lowest on average, despite their 2008 results. Washington, the Browns, and the Giants are the three worst home teams. The Jets, who play at the same home stadium as the Giants, are about 2 points better at home than away while the Giants are 1.76 points better. Surprisingly, each team has basically the same standard deviation of home-field advantage at around 2.5 points.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I set out to try and see if the evaporation of home-field advantage in 2020 looked different enough from previous years to claim that the COVID-19 fan and travel restrictions might be a cause of the decline. I found that, yes, home-field advantage was extremely small to non-existent in 2020, but that drop also happened last year in 2019. A few articles discussed it in 2019, but the lack of home-field advantage was discussed much more this year in the context of the global pandemic. However, I don&#39;t think the pandemic can be blamed. In recent years, home-field advantage has been very similar across teams, and it dropped to essentially zero last year before the pandemic. Certainly my model could be improved, maybe week 17 games where starters are resting should be dropped, maybe garbage time scores should be removed too, and certainly team strength varies over the course of a season. But I suspect even with more robustness checks and sophisticated tools, the result will remain the same. The home-field advantage disappeared last year, before anyone had heard of COVID-19.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Three 49ers games were moved to a neutral field, the Cardinal&#39;s home stadium, due to COVID-19 restrictions.&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;This kind of problem would still hold if one modeled home and away scores separately, rather than just the difference. The home team&#39;s score only provides information in the home offense relative to the away defense.&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Regular season football games can end in ties. They are rare enough that I chose to simply code ties as home team losses. Dropping them or changing them to home team wins do not meaningfully change the results because there are so few (10 out of 5,778 games since 1999). Teams with &amp;quot;perfect&amp;quot; records of 16-0 or 0-16 pose challenges as well. The MLE for their skill is &lt;span class=&#34;math inline&#34;&gt;\(\pm \infty\)&lt;/span&gt; because they always win or always lose. This is mostly an issue for interpretation of the team strength variables, but it does make other estimates a bit unstable as well.&lt;a href=&#34;#fnref3&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Why you shouldn’t “hold-out” data in survival-model predictions</title>
@@ -2320,7 +2854,7 @@ FALSE
     <item>
       <title>Political Text Analysis</title>
       <link>https://g-tierney.github.io/teaching/political_text/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 -0500</pubDate>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 -0400</pubDate>
       
       <guid>https://g-tierney.github.io/teaching/political_text/</guid>
       <description></description>

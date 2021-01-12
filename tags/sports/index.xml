@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sports on Graham Tierney</title>
+    <link>https://g-tierney.github.io/tags/sports/</link>
+    <description>Recent content in Sports on Graham Tierney</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://g-tierney.github.io/tags/sports/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Is the NFL&#39;s Home-Field Advantage Over?</title>
+      <link>https://g-tierney.github.io/post/home_field/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/home_field/</guid>
+      <description>Introduction Home-field advantage (HFA) has been documented in many sports, and much speculation has covered the potential causal mechanisms (referee bias, travel times, crowd reactions, etc.). In the NFL, historically, playing at home has offered about a three point advantage in the point differential, the equivalent of a field goal. However, with COVID-19 imposed restrictions, many home games were conducted without fans, and the home team&#39;s advantage nearly disappeared.</description>
+    </item>
+    
+  </channel>
+</rss>

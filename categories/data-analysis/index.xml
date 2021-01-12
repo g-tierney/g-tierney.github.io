@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://g-tierney.github.io/categories/data-analysis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Is the NFL&#39;s Home-Field Advantage Over?</title>
+      <link>https://g-tierney.github.io/post/home_field/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://g-tierney.github.io/post/home_field/</guid>
+      <description>Introduction Home-field advantage (HFA) has been documented in many sports, and much speculation has covered the potential causal mechanisms (referee bias, travel times, crowd reactions, etc.). In the NFL, historically, playing at home has offered about a three point advantage in the point differential, the equivalent of a field goal. However, with COVID-19 imposed restrictions, many home games were conducted without fans, and the home team&#39;s advantage nearly disappeared.</description>
+    </item>
     
     <item>
       <title>Why you shouldn’t “hold-out” data in survival-model predictions</title>

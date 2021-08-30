@@ -4,6 +4,14 @@
     
     <url>
     
+      <loc>https://g-tierney.github.io/publication/stldac/</loc>
+      <lastmod>2021-06-15T00:00:00-04:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>https://g-tierney.github.io/post/home_field/</loc>
       <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     </url>
@@ -94,6 +102,15 @@
     
       <loc>https://g-tierney.github.io/teaching/political_text/</loc>
       <lastmod>2016-04-27T00:00:00-04:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>https://g-tierney.github.io/publication_types/3/</loc>
+      <lastmod>2021-06-15T00:00:00-04:00</lastmod>
+      <priority>0</priority>
     </url>
     
   
@@ -254,6 +271,7 @@
     <url>
     
       <loc>https://g-tierney.github.io/publication_types/</loc>
+      <lastmod>2021-06-15T00:00:00-04:00</lastmod>
       <priority>0</priority>
     </url>
     

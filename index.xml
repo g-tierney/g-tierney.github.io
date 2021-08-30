@@ -11,6 +11,15 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Author Clustering and Topic Estimation for Short Texts</title>
+      <link>https://g-tierney.github.io/publication/stldac/</link>
+      <pubDate>Tue, 15 Jun 2021 00:00:00 -0400</pubDate>
+      
+      <guid>https://g-tierney.github.io/publication/stldac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Is the NFL&#39;s Home-Field Advantage Over?</title>
       <link>https://g-tierney.github.io/post/home_field/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
@@ -1870,17 +1879,16 @@ Intercept
       
       <guid>https://g-tierney.github.io/post/2018_10_books/</guid>
       <description>
+&lt;script src=&#34;https://g-tierney.github.io/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;div id=&#34;judea-pearls-the-book-of-why-the-new-science-of-cause-and-effect&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Judea Pearl’s &lt;a href=&#34;https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/&#34;&gt;The Book of Why: The New Science of Cause and Effect&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;###Judea Pearl’s &lt;a href=&#34;https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/&#34;&gt;The Book of Why: The New Science of Cause and Effect&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;I was honestly surprised by how much I liked this book. It covers Pearl’s new work on causal diagrams, directed graphs where each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously “squishy” arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.&lt;/p&gt;
 &lt;p&gt;For a little bit of background, usually when a researcher makes a causal claim about observational data (not a randomized control trial), they also specify some assumptions about how the variables need to relate to one another for the result to be causal not just correlational. Often these are justified by subject area knowledge or, when possible, other data analyses. Pearl’s causal diagrams, he claims, are easier to understand and interpret than written out descriptions of the model and assumptions.&lt;/p&gt;
 &lt;p&gt;What I found particularly entertaining in this book were the shots Pearl took at other practitioners, notably statisticians and economists, who he claims have thrown up their hands and abandoned causation as too difficult to prove. I can certainly sympathize with this view, particularly among economists, who I think are often too reluctant to make causal claims without randomized experiments.&lt;/p&gt;
 &lt;p&gt;However, throughout the book I constantly expected the next chapter to be about how to draw these diagrams. The examples he used were often related to smoking and lung cancer, where we have a very strong existing understanding of the causal mechanisms. But the diagrams seem much less helpful when you are not certain about which edges exist (and in which direction), or even what variables should be represented. The answer might delve too deep into epistemology (how do we “know” an empirical relationship exists), but it seems like a central question to the utility of these diagrams. The data analyst might rely on experts for the diagram, but I think many of the issues in causal inference come not from the ability to explain the causal assumptions but rather in justifying those assumptions.&lt;/p&gt;
 &lt;p&gt;Of course if an expert hands you a list of relationships that are accepted conventional wisdom in the field, a data analyst could do the causal analysis. But that never really happens outside of a few contrived subject areas. Particularly in social sciences, almost no relationships are accepted as true. Social structures even change over time, so the fact that some correlation held in the past is not always a good justification for using it in a causal diagram about current trends. To me, its always seemed easiest to make causal inferences when you have a strong understanding of the subject area. Going from a list of beliefs to a directed graph might help formalizing the mathematical definitions of cause and effect, but it really doesn’t seem like it would help much in practice because the hard part is getting that list and quantifying uncertainty about the list.&lt;/p&gt;
 &lt;p&gt;An area where I do understand how the diagrams are useful is when Pearl discussed how to teach causation to machines. A list of beliefs is quite hard for a computer to understand, but a directed graph referring to how each variable causes changes in others does sound very machine-interpret-able. The problem of generating the list still seems hard, but the notion of how do you tell a computer that X causes Y and not the reverse was pretty interesting.&lt;/p&gt;
-&lt;/div&gt;
 &lt;div id=&#34;john-carreyrous-bad-blood-the-theranos-story&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;John Carreyrou’s &lt;a href=&#34;https://www.amazon.com/Bad-Blood-Secrets-Silicon-Startup-ebook/dp/B078VW3VM7/&#34;&gt;Bad Blood: The Theranos Story&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This was a really fascinating rundown of how a well-regarded start-up collapsed. The short of it is that the promises made by the founder and CEO Elizabeth Holmes about being able to run hundreds of medical tests on a single drop of blood were lies. Employees who raised concerns that the tests were not accurate or that the product just didn’t work were told that they weren’t ``team players,’’ fired, and forced to sign non-disclosure agreements. Through a mixture of deceit (showing “live” demos that were actually recordings of results), strong branding, and an idea that, if it had worked, would genuinely have been revolutionary, she convinced senior executives and officials at a variety of institutions to buy into her company and her personally. When results did not look good or deadlines were not met, the executives made excuses or accepted the delays because they believed in the grand vision of revolutionizing health care.&lt;/p&gt;

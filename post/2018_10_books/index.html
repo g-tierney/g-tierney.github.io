@@ -195,6 +195,25 @@
         
 
         <li class="nav-item">
+          <a class="nav-link" href="/docs/academic_cv.pdf">
+            
+            <span>Resume</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
           <a class="nav-link" href="/#teaching">
             
             <span>Teaching</span>
@@ -371,17 +390,16 @@
 
     <div class="article-style" itemprop="articleBody">
       
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
-<div id="judea-pearls-the-book-of-why-the-new-science-of-cause-and-effect" class="section level3">
-<h3>Judea Pearl’s <a href="https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/">The Book of Why: The New Science of Cause and Effect</a></h3>
+<p>###Judea Pearl’s <a href="https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X/">The Book of Why: The New Science of Cause and Effect</a></p>
 <p>I was honestly surprised by how much I liked this book. It covers Pearl’s new work on causal diagrams, directed graphs where each node represents a variable and edges point in the direction of the causal effect. His claim is that these graphs make previously “squishy” arguments about identification mathematically robust, simplify many hard-to-explain causal concepts, and will be useful in building strong artificial intelligence because the graphs are machine-readable, unlike other causal identifying assumptions.</p>
 <p>For a little bit of background, usually when a researcher makes a causal claim about observational data (not a randomized control trial), they also specify some assumptions about how the variables need to relate to one another for the result to be causal not just correlational. Often these are justified by subject area knowledge or, when possible, other data analyses. Pearl’s causal diagrams, he claims, are easier to understand and interpret than written out descriptions of the model and assumptions.</p>
 <p>What I found particularly entertaining in this book were the shots Pearl took at other practitioners, notably statisticians and economists, who he claims have thrown up their hands and abandoned causation as too difficult to prove. I can certainly sympathize with this view, particularly among economists, who I think are often too reluctant to make causal claims without randomized experiments.</p>
 <p>However, throughout the book I constantly expected the next chapter to be about how to draw these diagrams. The examples he used were often related to smoking and lung cancer, where we have a very strong existing understanding of the causal mechanisms. But the diagrams seem much less helpful when you are not certain about which edges exist (and in which direction), or even what variables should be represented. The answer might delve too deep into epistemology (how do we “know” an empirical relationship exists), but it seems like a central question to the utility of these diagrams. The data analyst might rely on experts for the diagram, but I think many of the issues in causal inference come not from the ability to explain the causal assumptions but rather in justifying those assumptions.</p>
 <p>Of course if an expert hands you a list of relationships that are accepted conventional wisdom in the field, a data analyst could do the causal analysis. But that never really happens outside of a few contrived subject areas. Particularly in social sciences, almost no relationships are accepted as true. Social structures even change over time, so the fact that some correlation held in the past is not always a good justification for using it in a causal diagram about current trends. To me, its always seemed easiest to make causal inferences when you have a strong understanding of the subject area. Going from a list of beliefs to a directed graph might help formalizing the mathematical definitions of cause and effect, but it really doesn’t seem like it would help much in practice because the hard part is getting that list and quantifying uncertainty about the list.</p>
 <p>An area where I do understand how the diagrams are useful is when Pearl discussed how to teach causation to machines. A list of beliefs is quite hard for a computer to understand, but a directed graph referring to how each variable causes changes in others does sound very machine-interpret-able. The problem of generating the list still seems hard, but the notion of how do you tell a computer that X causes Y and not the reverse was pretty interesting.</p>
-</div>
 <div id="john-carreyrous-bad-blood-the-theranos-story" class="section level3">
 <h3>John Carreyrou’s <a href="https://www.amazon.com/Bad-Blood-Secrets-Silicon-Startup-ebook/dp/B078VW3VM7/">Bad Blood: The Theranos Story</a></h3>
 <p>This was a really fascinating rundown of how a well-regarded start-up collapsed. The short of it is that the promises made by the founder and CEO Elizabeth Holmes about being able to run hundreds of medical tests on a single drop of blood were lies. Employees who raised concerns that the tests were not accurate or that the product just didn’t work were told that they weren’t ``team players,’’ fired, and forced to sign non-disclosure agreements. Through a mixture of deceit (showing “live” demos that were actually recordings of results), strong branding, and an idea that, if it had worked, would genuinely have been revolutionary, she convinced senior executives and officials at a variety of institutions to buy into her company and her personally. When results did not look good or deadlines were not met, the executives made excuses or accepted the delays because they believed in the grand vision of revolutionizing health care.</p>

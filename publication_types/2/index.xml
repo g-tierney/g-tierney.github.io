@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2 on Graham Tierney</title>
-    <link>/publication_types/2/</link>
+    <link>https://g-tierney.github.io/publication_types/2/</link>
     <description>Recent content in 2 on Graham Tierney</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Tue, 01 Sep 2015 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 23 Sep 2021 00:00:00 -0400</lastBuildDate>
     
-	<atom:link href="/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://g-tierney.github.io/publication_types/2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>/examples/person-re-identification/</link>
-      <pubDate>Tue, 01 Sep 2015 00:00:00 -0500</pubDate>
+      <title>Anonymous Cross-Party Conversations Can Decrease Political Polarization: A Field Experiment on a Mobile Chat Platform</title>
+      <link>https://g-tierney.github.io/publication/mediation_sensitivity/</link>
+      <pubDate>Thu, 23 Sep 2021 00:00:00 -0400</pubDate>
       
-      <guid>/examples/person-re-identification/</guid>
-      <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
+      <guid>https://g-tierney.github.io/publication/mediation_sensitivity/</guid>
+      <description></description>
     </item>
     
   </channel>

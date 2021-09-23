@@ -1,6 +1,55 @@
 [
   {
     "authors": [
+      "Aidan Combs\\*",
+      "__Graham Tierney__\\*",
+      "Brian Guay",
+      "Friedolin Merhout",
+      "Christopher A. Bail",
+      "D. Sunshine Hillygus",
+      "Alexander Volfovsky"
+    ],
+    "categories": null,
+    "content": "",
+    "date": 1632369600,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1632369600,
+    "objectID": "fde70a19f9abe94873c55b0739fa3294",
+    "permalink": "https://g-tierney.github.io/publication/mediation_sensitivity/",
+    "publishdate": "2021-09-23T00:00:00-04:00",
+    "relpermalink": "/publication/mediation_sensitivity/",
+    "section": "publication",
+    "summary": "There is widespread concern that social media is driving political polarization. Yet little is known about how the design of social media platforms influences social cohesion. We created a mobile chat platform to study the impact of anonymous conversations between opposing partisan identifiers. Our study recruited Republicans and Democrats in the United States to complete a survey about their political views. We later randomized them into treatment conditions where they were offered financial incentives to use our platform to discuss politics with opposing partisan identifiers with varying amounts of information about their discussion partners. We find that people who engage in anonymous cross-party conversations about controversial topics exhibit substantial decreases in polarization compared to a placebo group that was asked to write an essay using the same conversation prompts. These depolarizing effects were particularly strong among Republicans and are correlated with the civility of dialogue. Our findings demonstrate the potential for well-designed social media platforms to mitigate political polarization and underscore the need for an open-source open-source platform for scientific research on social media. * Shared first authorship.",
+    "tags": null,
+    "title": "Anonymous Cross-Party Conversations Can Decrease Political Polarization: A Field Experiment on a Mobile Chat Platform",
+    "type": "publication"
+  },
+  {
+    "authors": [
+      "__Graham Tierney__",
+      "Alexander Volfovsky"
+    ],
+    "categories": null,
+    "content": "",
+    "date": 1632369600,
+    "expirydate": -62135596800,
+    "kind": "page",
+    "lang": "en",
+    "lastmod": 1632369600,
+    "objectID": "0f1785dc0f758e221c74657bca283cd3",
+    "permalink": "https://g-tierney.github.io/publication/discussit/",
+    "publishdate": "2021-09-23T00:00:00-04:00",
+    "relpermalink": "/publication/discussit/",
+    "section": "publication",
+    "summary": "We introduce a procedure to examine a text-as-mediator problem from a novel randomized experiment that studied the effect of conversations on political polarization. In this randomized experiment, Americans from the Democratic and Republican parties were either randomly paired with one-another to have an anonymous conversation about politics or alternatively not assigned to a conversation — change in political polarization over time was measured for all participants. This paper analyzes the text of the conversations to identify potential mediators of depolarization and is faced with a unique challenge, necessitated by the primary research hypothesis, that individuals in the control condition do not have conversations and so lack observed text data. We highlight the importance of using domain knowledge to perform dimension reduction on the text data, and describe a procedure to characterize indirect effects via text when the text is only observed in one arm of the experiment. ",
+    "tags": null,
+    "title": "Sensitivity Analysis for Causal Mediation through Text: an Application to Political Polarization",
+    "type": "publication"
+  },
+  {
+    "authors": [
       "__Graham Tierney__",
       "Christopher Bail",
       "Alexander Volfovsky"
@@ -17,7 +66,7 @@
     "publishdate": "2021-06-15T00:00:00-04:00",
     "relpermalink": "/publication/stldac/",
     "section": "publication",
-    "summary": "Analysis of short text, such as social media posts, is extremely difficult because it relies on observing many document-level word co-occurrence pairs. Beyond topic distributions, a common downstream task of the modeling is grouping the authors of these documents for subsequent analyses. Traditional models estimate the document groupings and identify user clusters with an independent procedure. We propose a novel model that expands on the Latent Dirichlet Allocation by modeling strong dependence among the words in the same document, with user-level topic distributions. We also simultaneously cluster users, removing the need for post-hoc cluster estimation and improving topic estimation by shrinking noisy user-level topic distributions towards typical values. Our method performs as well as -- or better -- than traditional approaches to problems arising in short text, and we demonstrate its usefulness on a dataset of tweets from United States Senators, recovering both meaningful topics and clusters that reflect partisan ideology.",
+    "summary": "Analysis of short text, such as social media posts, is extremely difficult because it relies on observing many document-level word co-occurrence pairs. Beyond topic distributions, a common downstream task of the modeling is grouping the authors of these documents for subsequent analyses. Traditional models estimate the document groupings and identify user clusters with an independent procedure. We propose a novel model that expands on the Latent Dirichlet Allocation by modeling strong dependence among the words in the same document, with user-level topic distributions. We also simultaneously cluster users, removing the need for post-hoc cluster estimation and improving topic estimation by shrinking noisy user-level topic distributions towards typical values. Our method performs as well as -- or better -- than traditional approaches to problems arising in short text, and we demonstrate its usefulness on a dataset of tweets from United States Senators, recovering both meaningful topics and clusters that reflect partisan ideology. ",
     "tags": null,
     "title": "Author Clustering and Topic Estimation for Short Texts",
     "type": "publication"
